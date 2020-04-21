@@ -25,6 +25,6 @@ struct Banchan: Codable {
     let description: String
     let n_price: String?
     let s_price: String
-    let badge: [String]
+    let badge: [String]?
     
 }

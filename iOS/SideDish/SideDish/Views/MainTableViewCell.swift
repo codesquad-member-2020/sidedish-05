@@ -13,8 +13,9 @@ class MainTableViewCell: UITableViewCell {
     @IBOutlet weak var menuImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var eventBadgeLabel: UILabel!
+    @IBOutlet weak var normalPriceLabel: UILabel!
+    @IBOutlet weak var salePriceLabel: UILabel!
+    @IBOutlet weak var eventBadgeButton: UIButton!
 
     override func awakeFromNib() {
         super.awakeFromNib()
