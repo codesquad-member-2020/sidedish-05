@@ -32,39 +32,35 @@
                                                         <constraint firstAttribute="width" secondItem="Lsp-hH-XBP" secondAttribute="height" id="1rr-oq-Jht"/>
                                                     </constraints>
                                                 </imageView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="PxL-89-ZYh">
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="PxL-89-ZYh">
                                                     <rect key="frame" x="125.66666666666667" y="16" width="233.33333333333331" height="88"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[마샐미디쉬] 매콤마늘쫑 해산물볶음 180g" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iyX-h6-oEY">
-                                                            <rect key="frame" x="0.0" y="0.0" width="233.33333333333334" height="19.666666666666668"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="233.33333333333334" height="21.333333333333332"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="탱글탱글한 새우와 오징어를 마늘쫑과 함께 매콤하게 볶아냈어요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="riO-x4-76d">
-                                                            <rect key="frame" x="0.0" y="22.666666666666664" width="233.33333333333334" height="20"/>
+                                                            <rect key="frame" x="0.0" y="22.333333333333336" width="233.33333333333334" height="21.333333333333336"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6,900원" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="16X-6y-L88">
-                                                            <rect key="frame" x="0.0" y="45.666666666666664" width="64" height="19.666666666666664"/>
+                                                            <rect key="frame" x="0.0" y="44.666666666666664" width="64" height="20.999999999999993"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                             <color key="textColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이벤트특가" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DWp-gb-L9U">
-                                                            <rect key="frame" x="0.0" y="68.333333333333329" width="56.333333333333336" height="19.666666666666671"/>
+                                                            <rect key="frame" x="0.0" y="66.666666666666671" width="56.333333333333336" height="21.333333333333329"/>
                                                             <color key="backgroundColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <constraints>
-                                                        <constraint firstItem="16X-6y-L88" firstAttribute="top" secondItem="riO-x4-76d" secondAttribute="bottom" constant="16" id="Fgd-51-lnZ"/>
-                                                        <constraint firstItem="riO-x4-76d" firstAttribute="top" secondItem="iyX-h6-oEY" secondAttribute="bottom" constant="16" id="T9s-hz-OIT"/>
-                                                    </constraints>
                                                 </stackView>
                                             </subviews>
                                             <constraints>
@@ -76,9 +72,9 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="PxL-89-ZYh" secondAttribute="bottom" constant="16" id="Wf1-cA-HaA"/>
-                                            <constraint firstAttribute="trailing" secondItem="PxL-89-ZYh" secondAttribute="trailing" constant="16" id="ZdO-M0-IN2"/>
-                                            <constraint firstItem="PxL-89-ZYh" firstAttribute="top" secondItem="Sv4-2U-COD" secondAttribute="top" constant="16" id="v69-QG-Ec0"/>
+                                            <constraint firstItem="PxL-89-ZYh" firstAttribute="bottom" secondItem="UL2-bp-qBG" secondAttribute="bottom" constant="-16" id="Wf1-cA-HaA"/>
+                                            <constraint firstItem="PxL-89-ZYh" firstAttribute="trailing" secondItem="UL2-bp-qBG" secondAttribute="trailing" constant="-16" id="ZdO-M0-IN2"/>
+                                            <constraint firstItem="PxL-89-ZYh" firstAttribute="top" secondItem="UL2-bp-qBG" secondAttribute="top" constant="16" id="v69-QG-Ec0"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="descriptionLabel" destination="riO-x4-76d" id="ENW-4y-3G9"/>
