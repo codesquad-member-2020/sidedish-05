@@ -1,14 +1,14 @@
 import React from "react";
 import { jsx, css } from "@emotion/core";
 import styled from "@emotion/styled";
-import Category from "./Category";
+import DetailProduct from "./DetailProduct/DetailProduct";
 
-const CategoryLsit = () => {
+const Product = () => {
   return (
     <div>
-      <Category></Category>
+      <DetailProduct></DetailProduct>
     </div>
   );
 };
 
-export default CategoryList;
+export default Product;
