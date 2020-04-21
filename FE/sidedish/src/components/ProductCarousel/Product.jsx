@@ -1,13 +1,14 @@
 import React from "react";
 import { jsx, css } from "@emotion/core";
 import styled from "@emotion/styled";
+import DetailProduct from "./DetailProduct/DetailProduct";
 
-const ImageList = () => {
+const Product = () => {
   return (
     <div>
-      <Image></Image>
+      <DetailProduct></DetailProduct>
     </div>
   );
 };
 
-export default ImageList;
+export default Product;
