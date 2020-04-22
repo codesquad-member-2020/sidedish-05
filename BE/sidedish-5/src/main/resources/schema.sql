@@ -32,12 +32,14 @@ CREATE TABLE sidedish_badge (
 CREATE TABLE thumbImage (
     id int auto_increment primary key,
     sidedish varchar (64) REFERENCES sidedish(id) ON UPDATE CASCADE,
+    sidedish_key int,
     image_url varchar (255)
 );
 
 CREATE TABLE detailImage (
     id int auto_increment primary key,
     sidedish varchar (64) REFERENCES sidedish(id) ON UPDATE CASCADE,
+    sidedish_key int,
     image_url varchar (255)
 );
 
