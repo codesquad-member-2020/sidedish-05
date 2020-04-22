@@ -12,6 +12,7 @@ SIDEDISH 서비스 - 5팀
 [sidedish-5 Ground Rule](https://github.com/codesquad-member-2020/sidedish-05/wiki/Ground-Rule)
 
 ## Web API
+[API URL](https://github.com/codesquad-member-2020/sidedish-05/wiki/API-URL)
 
 ## 배포
 * 데일리 배포
