@@ -9,8 +9,6 @@
 import UIKit
 
 class MainTableViewHeader: UITableViewCell {
-    
     @IBOutlet weak var badgeButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
-    
 }

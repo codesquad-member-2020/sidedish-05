@@ -9,14 +9,11 @@
 import Foundation
 
 struct BanchanInformation: Codable {
-    
     let statusCode: Int
     let body: [Banchan]
-    
 }
 
 struct Banchan: Codable {
-    
     let detail_hash: String
     let image: String
     let alt: String
@@ -26,5 +23,4 @@ struct Banchan: Codable {
     let n_price: String?
     let s_price: String
     let badge: [String]?
-    
 }

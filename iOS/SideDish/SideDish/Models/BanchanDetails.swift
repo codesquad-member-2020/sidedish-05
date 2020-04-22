@@ -9,14 +9,11 @@
 import Foundation
 
 struct BanchanDetailsInformation: Codable {
-    
     let hash: String
     let data: BanchanDetails
-    
 }
 
 struct BanchanDetails: Codable {
-    
     let top_image: String
     let thumb_images: [String]
     let product_description: String
@@ -25,5 +22,4 @@ struct BanchanDetails: Codable {
     let delivery_fee: String
     let prices: [String]
     let detail_section: [String]
-    
 }

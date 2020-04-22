@@ -9,7 +9,6 @@
 import UIKit
 
 class MainViewController: UIViewController {
-    
     @IBOutlet weak var tableView: UITableView!
     let badges = ["메인반찬", "국·찌개", "밑반찬"]
     let titles = ["한그릇 뚝딱 메인 요리", "김이 모락모락 국·찌개", "언제 먹어도 든든한 밑반찬"]
@@ -24,11 +23,9 @@ class MainViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
     }
-
 }
 
 extension MainViewController: UITableViewDataSource {
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 3
     }
@@ -41,11 +38,9 @@ extension MainViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MainTableViewCell", for: indexPath) as! MainTableViewCell
         return cell
     }
-    
 }
 
 extension MainViewController: UITableViewDelegate {
-    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 80
     }
@@ -58,5 +53,4 @@ extension MainViewController: UITableViewDelegate {
         headerView.titleLabel.text = titles[section]
         return headerView
     }
-    
 }
