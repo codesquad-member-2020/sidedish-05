@@ -30,8 +30,8 @@ const CategoryDetail = ({ contents }) => {
   return (
     <div>
       <SubListWrap>
-        {contents.map((content) => (
-          <SubList>{content}</SubList>
+        {contents.map((content, index) => (
+          <SubList key={index}>{content}</SubList>
         ))}
       </SubListWrap>
     </div>
