@@ -1,7 +1,9 @@
 package com.codesquad.sidedish5.domain;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import org.springframework.data.annotation.Id;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -32,16 +34,41 @@ public class Sidedish {
 
     private Set<SidedishBadge> sidedishBadges;
 
-    public Sidedish(String title, String mainImage, String description, int point, int n_price, int s_price, String deliveryType, String deliveryInfo, List<ThumbImage> thumbImages, List<DetailImage> detailImages) {
-        this.title = title;
-        this.mainImage = mainImage;
-        this.description = description;
-        this.point = point;
-        this.n_price = n_price;
-        this.s_price = s_price;
-        this.deliveryType = deliveryType;
-        this.deliveryInfo = deliveryInfo;
-        this.thumbImages = thumbImages;
-        this.detailImages = detailImages;
+    public Sidedish(JsonNode dish, JsonNode dishDetail) {
+        this.id = dish.get("detail_hash").textValue();
+        this.title = dish.get("title").textValue();
+        //todo: DTO에서 상세페이지의 메인 이미지에는 썸네일.get(0)해서 반환해주기
+        this.mainImage = dish.get("image").textValue();
+        this.description = dish.get("description").textValue();
+        this.point = Integer.parseInt(dishDetail.get("data").get("point").textValue().replace("원", ""));
+        this.s_price = exist(dish, "s_price");
+        this.n_price = exist(dish, "n_price");
+        this.deliveryType = dish.get("delivery_type").textValue();
+        this.deliveryInfo = dishDetail.get("data").get("delivery_info").textValue();
+        this.thumbImages = getThumbImages(dishDetail.get("data").get("thumb_images"));
+        this.detailImages = getDetailImages(dishDetail.get("data").get("detail_section"));
+    }
+
+    private List<ThumbImage> getThumbImages (JsonNode thumbImagesArray) {
+        List<ThumbImage> thumbImages = new ArrayList<>();
+        for (int i = 0; i < thumbImagesArray.size(); i++) {
+            thumbImages.add(new ThumbImage(thumbImagesArray.get(i).textValue()));
+        }
+        return thumbImages;
+    }
+
+    private List<DetailImage> getDetailImages (JsonNode detailImagesArray) {
+        List<DetailImage> detailImages = new ArrayList<>();
+        for (int i = 0; i < detailImagesArray.size(); i++) {
+            detailImages.add(new DetailImage(detailImagesArray.get(i).textValue()));
+        }
+        return detailImages;
+    }
+
+    private int exist(JsonNode dish, String priceType) {
+        if (dish.has(priceType)) {
+            return Integer.parseInt(dish.get("s_price").textValue().replace("원", ""));
+        }
+        return 0;
     }
 }
