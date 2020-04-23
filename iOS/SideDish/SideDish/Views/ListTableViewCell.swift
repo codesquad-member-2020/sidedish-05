@@ -14,7 +14,8 @@ class ListTableViewCell: UITableViewCell {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var normalPriceLabel: UILabel!
     @IBOutlet weak var salePriceLabel: UILabel!
-    @IBOutlet weak var eventBadgeButton: UIButton!
+    @IBOutlet weak var stackView: UIStackView!
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,7 +26,25 @@ class ListTableViewCell: UITableViewCell {
     }
     
     func configure(data: [Dish], row: Int) {
-        titleLabel.text = data[row].title
-        descriptionLabel.text = data[row].description
+        let dish = data[row]
+        
+        guard let imageURL = URL(string: dish.image) else { return }
+        DispatchQueue.global().async {
+            if let data = try? Data(contentsOf: imageURL) {
+                DispatchQueue.main.async {
+                    self.menuImageView.image = UIImage(data: data)
+                    self.menuImageView.layer.cornerRadius = self.menuImageView.frame.height / 2
+                }
+            }
+        }
+        
+        titleLabel.text = dish.title
+        descriptionLabel.text = dish.description
+        if let normalPrice = dish.normalPrice {
+            normalPriceLabel.text = normalPrice
+        } else {
+            normalPriceLabel.isHidden = true
+        }
+        salePriceLabel.text = dish.salePrice
     }
 }

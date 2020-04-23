@@ -67,26 +67,26 @@
                                                         <constraint firstAttribute="width" secondItem="Lsp-hH-XBP" secondAttribute="height" id="1rr-oq-Jht"/>
                                                     </constraints>
                                                 </imageView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Sf5-6z-41h">
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Sf5-6z-41h">
                                                     <rect key="frame" x="120" y="16" width="239" height="88"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[마샐미디쉬] 매콤마늘쫑 해산물볶음 180g" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iyX-h6-oEY">
-                                                            <rect key="frame" x="0.0" y="0.0" width="239" height="20"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="239" height="19"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="탱글탱글한 새우와 오징어를 마늘쫑과 함께 매콤하게 볶아냈어요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="riO-x4-76d">
-                                                            <rect key="frame" x="0.0" y="24" width="239" height="16"/>
+                                                            <rect key="frame" x="0.0" y="23" width="239" height="19"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                             <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="pE6-ms-fbn">
-                                                            <rect key="frame" x="0.0" y="44" width="101.66666666666667" height="21"/>
+                                                            <rect key="frame" x="0.0" y="46" width="101.66666666666667" height="19"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5WF-Xg-WV6">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="33.666666666666664" height="21"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="33.666666666666664" height="19"/>
                                                                     <attributedString key="attributedText">
                                                                         <fragment content="7,900">
                                                                             <attributes>
@@ -99,22 +99,16 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6,900원" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eme-ok-S1i">
-                                                                    <rect key="frame" x="37.666666666666657" y="0.0" width="64" height="21"/>
+                                                                    <rect key="frame" x="37.666666666666657" y="0.0" width="64" height="19"/>
                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                                     <color key="textColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
                                                         </stackView>
-                                                        <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mHm-lo-Hlf">
+                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="aw9-gY-DJp">
                                                             <rect key="frame" x="0.0" y="69" width="61" height="19"/>
-                                                            <color key="backgroundColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                            <inset key="contentEdgeInsets" minX="2" minY="1" maxX="2" maxY="1"/>
-                                                            <state key="normal" title="이벤트특가">
-                                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            </state>
-                                                        </button>
+                                                        </stackView>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
@@ -130,10 +124,10 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="descriptionLabel" destination="riO-x4-76d" id="ENW-4y-3G9"/>
-                                            <outlet property="eventBadgeButton" destination="mHm-lo-Hlf" id="0ef-cB-iam"/>
                                             <outlet property="menuImageView" destination="Lsp-hH-XBP" id="fvC-8F-Ses"/>
                                             <outlet property="normalPriceLabel" destination="5WF-Xg-WV6" id="lWL-OC-Htv"/>
                                             <outlet property="salePriceLabel" destination="Eme-ok-S1i" id="EM8-fr-xjk"/>
+                                            <outlet property="stackView" destination="aw9-gY-DJp" id="jLb-dO-ViT"/>
                                             <outlet property="titleLabel" destination="iyX-h6-oEY" id="voy-iz-7oz"/>
                                         </connections>
                                     </tableViewCell>

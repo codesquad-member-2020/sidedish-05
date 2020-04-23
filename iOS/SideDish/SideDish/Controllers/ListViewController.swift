@@ -77,6 +77,10 @@ extension ListViewController: UITableViewDataSource {
         return 8
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 120
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListTableViewCell", for: indexPath) as! ListTableViewCell
         if indexPath.section == 0, let main = main { cell.configure(data: main, row: indexPath.row) }

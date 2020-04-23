@@ -22,7 +22,7 @@ struct Dish: Codable {
     let description: String
     let normalPrice: String?
     let salePrice: String
-    let badge: [String]?
+    let events: [String]?
     
     enum CodingKeys: String, CodingKey {
         case identifier = "detail_hash"
@@ -33,6 +33,6 @@ struct Dish: Codable {
         case description
         case normalPrice = "n_price"
         case salePrice = "s_price"
-        case badge
+        case events = "badge"
     }
 }
