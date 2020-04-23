@@ -25,6 +25,13 @@ class ListTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
+    override func prepareForReuse() {
+        normalPriceLabel.isHidden = false
+        for subView in stackView.arrangedSubviews {
+            subView.removeFromSuperview()
+        }
+    }
+    
     func configure(data: [Dish], row: Int) {
         let dish = data[row]
         
@@ -46,5 +53,10 @@ class ListTableViewCell: UITableViewCell {
             normalPriceLabel.isHidden = true
         }
         salePriceLabel.text = dish.salePrice
+        
+        guard let events = dish.events else { return }
+        for event in events {
+            stackView.addArrangedSubview(BadgeLabel(title: event))
+        }
     }
 }
