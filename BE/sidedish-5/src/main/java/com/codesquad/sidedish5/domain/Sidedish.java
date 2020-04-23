@@ -18,11 +18,11 @@ public class Sidedish {
 
     private String description;
 
-    private int point;
+    private String point;
 
-    private int n_price;
+    private String n_price;
 
-    private int s_price;
+    private String s_price;
 
     private String deliveryType;
 
@@ -40,7 +40,7 @@ public class Sidedish {
         //todo: DTO에서 상세페이지의 메인 이미지에는 썸네일.get(0)해서 반환해주기
         this.mainImage = dish.get("image").textValue();
         this.description = dish.get("description").textValue();
-        this.point = Integer.parseInt(dishDetail.get("data").get("point").textValue().replace("원", ""));
+        this.point = dishDetail.get("data").get("point").textValue().replace("원", "");
         this.s_price = exist(dish, "s_price");
         this.n_price = exist(dish, "n_price");
         this.deliveryType = dish.get("delivery_type").textValue();
@@ -65,10 +65,10 @@ public class Sidedish {
         return detailImages;
     }
 
-    private int exist(JsonNode dish, String priceType) {
+    private String exist(JsonNode dish, String priceType) {
         if (dish.has(priceType)) {
-            return Integer.parseInt(dish.get("s_price").textValue().replace("원", ""));
+            return dish.get(priceType).textValue().replace("원", "");
         }
-        return 0;
+        return "";
     }
 }

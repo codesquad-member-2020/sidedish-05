@@ -16,9 +16,9 @@ CREATE TABLE sidedish (
     title varchar (64),
     main_image varchar (255),
     description varchar (255),
-    point int,
-    n_price int,
-    s_price int,
+    point varchar (64),
+    n_price varchar (64),
+    s_price varchar (64),
     delivery_type varchar (64),
     delivery_info varchar (255),
     category varchar (64) REFERENCES category(id) ON UPDATE CASCADE
