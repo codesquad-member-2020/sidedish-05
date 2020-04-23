@@ -1,4 +1,5 @@
-DROP TABLE IF EXISTS user, bestCategory_sidedish, bestCategory, detail_image, thumb_image, sidedish_badge, sidedish, badge, category;
+DROP TABLE IF EXISTS user, bestCategory_sidedish, bestCategory, detail_image, thumb_image, sidedish_badge,
+sidedish_delivery_type, delivery_type, sidedish, badge, category;
 
 CREATE TABLE category (
     id int auto_increment primary key,
@@ -54,10 +55,10 @@ CREATE TABLE bestCategory_sidedish (
     PRIMARY KEY (best_category, sidedish)
 );
 
-CREATE TABLE delivery_type {
+CREATE TABLE delivery_type (
     id int auto_increment primary key,
     delivery_type varchar (64)
-}
+);
 
 CREATE TABLE sidedish_delivery_type (
     delivery_type int REFERENCES delivery_type(id) ON UPDATE CASCADE,
