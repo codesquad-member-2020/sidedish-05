@@ -9,7 +9,7 @@
 import Foundation
 
 protocol NetworkManable {
-    func getResource(from: String, handler: @escaping () -> ())
+    func getResource(from: String, handler: @escaping (Data?, Error?) -> ())
 }
 
 class NetworkManager: NetworkManable {
@@ -19,10 +19,10 @@ class NetworkManager: NetworkManable {
         static let side = "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/side"
     }
     
-    func getResource(from: String, handler: @escaping () -> ()) {
+    func getResource(from: String, handler: @escaping (Data?, Error?) -> ()) {
         guard let url = URL(string: from) else { return }
         URLSession.shared.dataTask(with: url) { (data, response, error) in
-            handler()
+            handler(data, error)
         }.resume()
     }
 }

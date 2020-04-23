@@ -1,5 +1,5 @@
 //
-//  MainTableViewCell.swift
+//  ListTableViewCell.swift
 //  SideDish
 //
 //  Created by jinie on 2020/04/21.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainTableViewCell: UITableViewCell {
+class ListTableViewCell: UITableViewCell {
     @IBOutlet weak var menuImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
@@ -22,5 +22,10 @@ class MainTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+    }
+    
+    func configure(data: [Dish], row: Int) {
+        titleLabel.text = data[row].title
+        descriptionLabel.text = data[row].description
     }
 }

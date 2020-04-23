@@ -1,5 +1,5 @@
 //
-//  MainTableViewHeader.swift
+//  ListTableViewHeader.swift
 //  SideDish
 //
 //  Created by jinie on 2020/04/21.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainTableViewHeader: UITableViewCell {
+class ListTableViewHeader: UITableViewCell {
     @IBOutlet weak var badgeButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
 }

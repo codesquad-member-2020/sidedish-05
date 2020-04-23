@@ -1,5 +1,5 @@
 //
-//  BanchanDetails.swift
+//  DishDetails.swift
 //  SideDish
 //
 //  Created by jinie on 2020/04/21.
@@ -8,12 +8,12 @@
 
 import Foundation
 
-struct BanchanDetailsInformation: Codable {
+struct DishDetailsInformation: Codable {
     let hash: String
-    let data: BanchanDetails
+    let data: DishDetails
 }
 
-struct BanchanDetails: Codable {
+struct DishDetails: Codable {
     let top_image: String
     let thumb_images: [String]
     let product_description: String
