@@ -2,7 +2,11 @@ package com.codesquad.sidedish5.service;
 
 import com.codesquad.sidedish5.domain.Category;
 import com.codesquad.sidedish5.domain.Sidedish;
+import com.codesquad.sidedish5.domain.SidedishBadge;
+import com.codesquad.sidedish5.domain.SidedishDeliveryType;
+import com.codesquad.sidedish5.repository.BadgeDao;
 import com.codesquad.sidedish5.repository.CategoryRepository;
+import com.codesquad.sidedish5.repository.DeliveryTypeDao;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -14,6 +18,8 @@ import org.springframework.web.client.RestTemplate;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.HashSet;
+import java.util.Set;
 
 @Service
 public class ApiService {
@@ -21,7 +27,13 @@ public class ApiService {
     private static final Logger log = LoggerFactory.getLogger(ApiService.class);
 
     @Autowired
-    CategoryRepository categoryRepository;
+    private CategoryRepository categoryRepository;
+
+    @Autowired
+    private BadgeDao badgeDao;
+
+    @Autowired
+    private DeliveryTypeDao deliveryTypeDao;
 
     RestTemplate restTemplate = new RestTemplate();
     ObjectMapper objectMapper = new ObjectMapper();
@@ -51,8 +63,31 @@ public class ApiService {
         for (int j = 0; j < hashList.length; j++) {
             JsonNode dish = objectMapper.readTree(api(categoryList, hashList[j]));
             JsonNode dishDetail = objectMapper.readTree(api("detail", hashList[j]));
+            Sidedish sidedish = new Sidedish(dish, dishDetail);
+            if (dish.has("badge")) {
+                sidedish.setBadge(createBadge(dish.get("badge")));
+            }
+            if (dish.has("delivery_type")) {
+                sidedish.setDeliveryType(createDeliveryType(dish.get("delivery_type")));
+            }
 
-            category.addSidedish(new Sidedish(dish, dishDetail));
+            category.addSidedish(sidedish);
         }
+    }
+
+    private Set<SidedishDeliveryType> createDeliveryType(JsonNode deliverTypes) {
+        Set<SidedishDeliveryType> deliveryTypeSet = new HashSet<>();
+        for (JsonNode deliveryType : deliverTypes) {
+            deliveryTypeSet.add(new SidedishDeliveryType(deliveryTypeDao.findIdByName(deliveryType.textValue())));
+        }
+        return deliveryTypeSet;
+    }
+
+    private Set<SidedishBadge> createBadge(JsonNode badges) {
+        Set<SidedishBadge> badgeSet = new HashSet<>();
+        for (JsonNode badge : badges) {
+            badgeSet.add(new SidedishBadge(badgeDao.findIdByName(badge.textValue())));
+        }
+        return badgeSet;
     }
 }

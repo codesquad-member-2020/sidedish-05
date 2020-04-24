@@ -1,5 +1,6 @@
 package com.codesquad.sidedish5.domain;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.databind.JsonNode;
 import org.springframework.data.annotation.Id;
 
@@ -7,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class Sidedish {
 
     @Id
@@ -33,6 +35,9 @@ public class Sidedish {
     private List<DetailImage> detailImages;
 
     private Set<SidedishBadge> sidedishBadges;
+    private Set<SidedishDeliveryType> sidedishDeliveryType;
+
+    public Sidedish() {}
 
     public Sidedish(JsonNode dish, JsonNode dishDetail) {
         this.id = dish.get("detail_hash").textValue();
@@ -41,8 +46,8 @@ public class Sidedish {
         this.mainImage = dish.get("image").textValue();
         this.description = dish.get("description").textValue();
         this.point = dishDetail.get("data").get("point").textValue().replace("원", "");
-        this.s_price = exist(dish, "s_price");
-        this.n_price = exist(dish, "n_price");
+        this.s_price = existPrice(dish, "s_price");
+        this.n_price = existPrice(dish, "n_price");
         this.deliveryType = dish.get("delivery_type").textValue();
         this.deliveryInfo = dishDetail.get("data").get("delivery_info").textValue();
         this.thumbImages = getThumbImages(dishDetail.get("data").get("thumb_images"));
@@ -65,10 +70,19 @@ public class Sidedish {
         return detailImages;
     }
 
-    private String exist(JsonNode dish, String priceType) {
+    private String existPrice(JsonNode dish, String priceType) {
         if (dish.has(priceType)) {
             return dish.get(priceType).textValue().replace("원", "");
         }
         return "";
     }
+
+    public void setBadge(Set<SidedishBadge> sidedishBadges) {
+        this.sidedishBadges = sidedishBadges;
+    }
+
+    public void setDeliveryType(Set<SidedishDeliveryType> sidedishDeliveryTypes) {
+        this.sidedishDeliveryType = sidedishDeliveryTypes;
+    }
+
 }
