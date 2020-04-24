@@ -11,7 +11,7 @@ INSERT INTO delivery_type
 VALUES (1, '새벽배송'),
        (2, '전국택배');
 
-INSERT INTO bestCategory
+INSERT INTO best_category
     (id, name)
 VALUES (1, '할인특가 세트상'),
        (2, '풍성한 고기반찬'),

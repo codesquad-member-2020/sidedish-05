@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS user, bestCategory_sidedish, bestCategory, detail_image, thumb_image, sidedish_badge,
+DROP TABLE IF EXISTS user, best_category_sidedish, best_category, detail_image, thumb_image, sidedish_badge,
 sidedish_delivery_type, delivery_type, sidedish, badge, category;
 
 CREATE TABLE category (
@@ -44,13 +44,13 @@ CREATE TABLE detail_image (
     image_url varchar (255)
 );
 
-CREATE TABLE bestCategory (
+CREATE TABLE best_category (
     id int auto_increment primary key,
     name varchar (64)
 );
 
-CREATE TABLE bestCategory_sidedish (
-    best_category int REFERENCES bestCategory(id) ON UPDATE CASCADE,
+CREATE TABLE best_category_sidedish (
+    best_category int REFERENCES best_category(id) ON UPDATE CASCADE,
     sidedish varchar (64) REFERENCES sidedish(id) ON UPDATE CASCADE,
     PRIMARY KEY (best_category, sidedish)
 );
