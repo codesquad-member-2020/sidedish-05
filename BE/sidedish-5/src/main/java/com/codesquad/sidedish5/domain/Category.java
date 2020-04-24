@@ -1,10 +1,12 @@
 package com.codesquad.sidedish5.domain;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import org.springframework.data.annotation.Id;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class Category {
 
     @Id
