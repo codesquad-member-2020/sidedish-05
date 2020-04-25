@@ -15,6 +15,13 @@ const SliderWrap = styled.div`
   margin: 0 auto;
 `;
 
+const slideSettings = {
+  infinite: true,
+  speed: 500,
+  slidesToScroll: 4,
+  slidesToShow: 4,
+};
+
 const ProductCarousel = ({ api }) => {
   const [products, setProducts] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -41,7 +48,7 @@ const ProductCarousel = ({ api }) => {
 
   return (
     <SliderWrap>
-      <Slider>
+      <Slider {...slideSettings}>
         {products.map((item) => (
           <div style={{ width: 215 }}>
             <Product item={item} key={item.detail_hash}></Product>
