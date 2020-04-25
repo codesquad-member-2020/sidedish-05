@@ -15,9 +15,31 @@ const Image = styled.img`
   }
 `;
 
-const DeilveryTypeContainer = styled.div``;
+const DeilveryTypeContainer = styled.div`
+  opacity: 0;
+  background-color: #000;
+  height: 215px;
+  width: 215px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  &:hover {
+    opacity: 0.7;
+  }
+`;
 
-const DeilveryType = styled.div``;
+const DeilveryType = styled.div`
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  width: inherit;
+  margin: 10px 0;
+`;
 
 const ProductImage = ({ imgdata }) => {
   const { image, title, delivery_type } = imgdata;
