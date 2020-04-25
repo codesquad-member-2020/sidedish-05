@@ -15,12 +15,21 @@ const Image = styled.img`
   }
 `;
 
+const DeilveryTypeContainer = styled.div``;
+
+const DeilveryType = styled.div``;
+
 const ProductImage = ({ imgdata }) => {
   const { image, title, delivery_type } = imgdata;
 
   return (
     <Container>
       <Image src={image} alt={title}></Image>
+      <DeilveryTypeContainer className="delivery">
+        {delivery_type.map((type) => (
+          <DeilveryType>{type}</DeilveryType>
+        ))}
+      </DeilveryTypeContainer>
     </Container>
   );
 };
