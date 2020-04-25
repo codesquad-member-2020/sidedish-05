@@ -15,11 +15,33 @@ const SliderWrap = styled.div`
   margin: 0 auto;
 `;
 
+const NextArrow = styled.div`
+  display: block;
+  background: url(${arrowNext});
+  height: 30px;
+  width: 30px;
+  &::before {
+    content: "";
+  }
+`;
+
+const PrevArrow = styled.div`
+  display: block;
+  background: url(${arrowPrev});
+  height: 30px;
+  width: 30px;
+  &::before {
+    content: "";
+  }
+`;
+
 const slideSettings = {
   infinite: true,
   speed: 500,
   slidesToScroll: 4,
   slidesToShow: 4,
+  nextArrow: <NextArrow />,
+  prevArrow: <PrevArrow />,
 };
 
 const ProductCarousel = ({ api }) => {
