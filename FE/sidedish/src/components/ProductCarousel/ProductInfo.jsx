@@ -1,7 +1,10 @@
 import React from "react";
 import styled from "@emotion/styled";
 
-const Container = styled.dl``;
+const Container = styled.dl`
+  padding: 16px 10px 12px 10px;
+  text-align: center;
+`;
 
 const ProductTitle = styled.dt``;
 
