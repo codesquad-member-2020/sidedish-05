@@ -33,12 +33,14 @@ const MoreCarousel = () => {
 
   return (
     <>
-      <Container>
-        <MoreButton onClick={onClick}>
-          <ButtonText>{"반찬 전체보기"}</ButtonText>
-        </MoreButton>
-      </Container>
-      {showResults ? <ProductCarousel api={API_URL.side} /> : null}
+      {!showResults && (
+        <Container>
+          <MoreButton onClick={onClick}>
+            <ButtonText>{"반찬 전체보기"}</ButtonText>
+          </MoreButton>
+        </Container>
+      )}
+      {showResults && <ProductCarousel api={API_URL.side} />}
     </>
   );
 };
