@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
 import ProductCarousel from "./ProductCarousel";
+import arrowNext from "./navigate_next.png";
 import { API_URL } from "../../common/config";
 
 const MoreButton = styled.button`
@@ -18,7 +19,7 @@ const MoreButton = styled.button`
 
 const ButtonText = styled.span`
   padding-right: 14px;
-  background: url("https://cdn.bmf.kr/web/main/btn_arr_more.png") no-repeat 100% 3px;
+  background: url(${arrowNext}) no-repeat 100% 3px;
 `;
 
 const MoreCarousel = () => {
