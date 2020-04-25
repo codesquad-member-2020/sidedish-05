@@ -15,14 +15,14 @@ const ProductImageContainer = styled.div`
 `;
 
 const Product = ({ item }) => {
-  const { image, delivery_type, title, description, n_price, s_price } = item;
+  const { image, delivery_type, title, description, n_price, s_price, badge } = item;
 
   return (
     <ProductBox>
       <ProductImageContainer>
         <ProductImage imgdata={{ image: image, title: title, delivery_type: delivery_type }} />
         <ProductInfo infodata={{ title, description, n_price, s_price }} />
-        <ProductBadge />
+        {badge && badge.length ? <ProductBadge badgedata={badge} /> : ""}
       </ProductImageContainer>
       {/* <DetailProduct></DetailProduct> */}
     </ProductBox>
