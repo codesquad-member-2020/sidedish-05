@@ -1,20 +1,37 @@
 package com.codesquad.sidedish5.dto;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.util.ArrayList;
 import java.util.List;
 
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class DetailDto {
 
+    @JsonProperty("sidedish_id")
     private final String sidedishId;
-    private final String title;
-    private final String description;
+
+    @JsonProperty("main_Image")
     private final String mainImage;
-    private final String point;
+
+    @JsonProperty("thumb_image")
+    private final List<String> thumbImage;
+
+    @JsonProperty("detail_section")
+    private List<String> detailSection;
+
+    @JsonProperty("delivery_info")
     private final String deliveryInfo;
+
+    @JsonProperty("delivery_fee")
     private final String deliveryFee;
+
+    private final String description;
+    private final String title;
+    private final String point;
     private final String n_price;
     private final String s_price;
-    private List<String> thumbImage;
-    private List<String> detailSection;
 
     public DetailDto(Builder builder) {
         sidedishId = builder.sidedishId;
@@ -35,13 +52,13 @@ public class DetailDto {
         private String title;
         private String description;
         private String mainImage;
-        private List<String> thumbImage;
+        private List<String> thumbImage = new ArrayList<>();
         private String point;
         private String deliveryInfo;
         private String deliveryFee;
         private String n_price;
         private String s_price;
-        private List<String> detailSection;
+        private List<String> detailSection = new ArrayList<>();
 
         public Builder(String sidedishId) {
             this.sidedishId = sidedishId;

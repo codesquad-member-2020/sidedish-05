@@ -1,18 +1,29 @@
 package com.codesquad.sidedish5.dto;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.util.ArrayList;
 import java.util.List;
 
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class OverviewDto {
 
+    @JsonProperty("sidedish_id")
     private final String sidedishId;
+
+    @JsonProperty("main_image")
+    private final String mainImage;
+
+    @JsonProperty("delivery_type")
+    private final List<String> deliveryType;
+
     private final String title;
     private final String description;
-    private final String mainImage;
     private final String alt;
     private final String n_price;
     private final String s_price;
-    private List<String> deliveryType;
-    private List<String> badge;
+    private final List<String> badge;
 
     public OverviewDto(Builder builder) {
         sidedishId = builder.sidedishId;
@@ -22,6 +33,7 @@ public class OverviewDto {
         n_price = builder.n_price;
         s_price = builder.s_price;
         alt = builder.alt;
+        deliveryType = builder.deliveryType;
         badge = builder.badge;
     }
 
@@ -34,7 +46,8 @@ public class OverviewDto {
         private String alt;
         private String n_price;
         private String s_price;
-        private List<String> badge;
+        private List<String> deliveryType = new ArrayList<>();
+        private List<String> badge = new ArrayList<>();
 
         public Builder(String sidedishId) {
             this.sidedishId = sidedishId;
@@ -67,6 +80,11 @@ public class OverviewDto {
 
         public Builder alt(String alt) {
             this.alt = alt;
+            return this;
+        }
+
+        public Builder deliveryType(List<String> deliveryType) {
+            this.deliveryType = deliveryType;
             return this;
         }
 
