@@ -18,8 +18,8 @@ const MoreButton = styled.button`
 `;
 
 const ButtonText = styled.span`
-  padding-right: 14px;
-  background: url(${arrowNext}) no-repeat 100% 3px;
+  padding-right: 34px;
+  background: url(${arrowNext}) no-repeat 100%;
 `;
 
 const MoreCarousel = () => {
