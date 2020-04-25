@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "@emotion/styled";
+import ProductCarousel from "./ProductCarousel";
+import { API_URL } from "../../common/config";
 
 const MoreButton = styled.button`
   margin: 38px auto 50px;
@@ -20,10 +22,16 @@ const ButtonText = styled.span`
 `;
 
 const MoreCarousel = () => {
+  const [showResults, setShowResults] = useState(false);
+  const onClick = () => setShowResults(true);
+
   return (
-    <MoreButton>
-      <ButtonText>{"반찬 전체보기"}</ButtonText>
-    </MoreButton>
+    <>
+      <MoreButton onClick={onClick}>
+        <ButtonText>{"반찬 전체보기"}</ButtonText>
+      </MoreButton>
+      {showResults ? <ProductCarousel api={API_URL.side} /> : null}
+    </>
   );
 };
 
