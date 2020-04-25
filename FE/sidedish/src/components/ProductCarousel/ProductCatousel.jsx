@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Skeleton from "react-loading-skeleton";
 import Product from "./Product/Product";
+import ProductCarouselTitle from "./ProductCarouselTitle";
 // import usePromise from "../../lib/usePromise";
 import arrowNext from "./navigate_next.png";
 import arrowPrev from "./navigate_before.png";
@@ -69,15 +70,21 @@ const ProductCarousel = ({ api }) => {
   if (!products) return null;
 
   return (
-    <SliderWrap>
-      <Slider {...slideSettings}>
-        {products.map((item) => (
-          <div style={{ width: 215 }}>
-            <Product item={item} key={item.detail_hash}></Product>
-          </div>
-        ))}
-      </Slider>
-    </SliderWrap>
+    <>
+      <ProductCarouselTitle
+        title={"밑반찬"}
+        description={"언제 먹어도 든든한 밑반찬"}
+      ></ProductCarouselTitle>
+      <SliderWrap>
+        <Slider {...slideSettings}>
+          {products.map((item) => (
+            <div style={{ width: 215 }}>
+              <Product item={item} key={item.detail_hash}></Product>
+            </div>
+          ))}
+        </Slider>
+      </SliderWrap>
+    </>
   );
 };
 
