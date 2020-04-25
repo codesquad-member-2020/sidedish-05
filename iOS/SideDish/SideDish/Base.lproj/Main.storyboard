@@ -107,7 +107,7 @@
                                                             </subviews>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="aw9-gY-DJp">
-                                                            <rect key="frame" x="0.0" y="69" width="61" height="19"/>
+                                                            <rect key="frame" x="0.0" y="69" width="50" height="19"/>
                                                         </stackView>
                                                     </subviews>
                                                 </stackView>

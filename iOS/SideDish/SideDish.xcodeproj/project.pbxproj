@@ -85,10 +85,10 @@
 		7834D9AA244D901B00F72768 /* SideDish */ = {
 			isa = PBXGroup;
 			children = (
-				78414AC524502B6200B363D4 /* Network */,
 				788C9CAA244EA9CD00368F06 /* Models */,
 				788C9CAB244EA9DC00368F06 /* Views */,
 				788C9CAC244EA9E800368F06 /* Controllers */,
+				78414AC524502B6200B363D4 /* Network */,
 				7834D9AB244D901B00F72768 /* AppDelegate.swift */,
 				7834D9AD244D901B00F72768 /* SceneDelegate.swift */,
 				7834D9B1244D901B00F72768 /* Main.storyboard */,

@@ -13,34 +13,35 @@ class ListViewController: UIViewController {
     
     private var main: [Dish]? {
         didSet {
-            DispatchQueue.main.async {
-                self.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
-            }
+            NotificationCenter.default.post(name: dishesRenewalNotification,
+                                            object: nil,
+                                            userInfo: [dishesRenewalInfoKey: 0])
         }
     }
     private var soup: [Dish]? {
         didSet {
-            DispatchQueue.main.async {
-                self.tableView.reloadSections(IndexSet(integer: 1), with: .automatic)
-            }
+            NotificationCenter.default.post(name: dishesRenewalNotification,
+                                            object: nil,
+                                            userInfo: [dishesRenewalInfoKey: 1])
         }
     }
     private var side: [Dish]? {
         didSet {
-            DispatchQueue.main.async {
-                self.tableView.reloadSections(IndexSet(integer: 2), with: .automatic)
-            }
+            NotificationCenter.default.post(name: dishesRenewalNotification,
+                                            object: nil,
+                                            userInfo: [dishesRenewalInfoKey: 2])
         }
     }
     
-    let badges = ["메인반찬", "국·찌개", "밑반찬"]
-    let titles = ["한그릇 뚝딱 메인 요리", "김이 모락모락 국·찌개", "언제 먹어도 든든한 밑반찬"]
+    private let dishesRenewalNotification = Notification.Name("dishRenewalNotification")
+    private let dishesRenewalInfoKey = "section"
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureNavigationBar()
         configureTableView()
+        registerNotification()
         requestListData()
     }
     
@@ -51,6 +52,22 @@ class ListViewController: UIViewController {
     func configureTableView() {
         tableView.dataSource = self
         tableView.delegate = self
+    }
+    
+    func registerNotification() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(reloadSection(_:)),
+                                               name: dishesRenewalNotification,
+                                               object: nil)
+    }
+    
+    @objc func reloadSection(_ notification: Notification) {
+        guard let userInfo = notification.userInfo else { return }
+        let section = userInfo[dishesRenewalInfoKey] as! Int
+        DispatchQueue.main.async {
+//            self.tableView.reloadSections(IndexSet(integer: section), with: .automatic)
+            self.tableView.reloadData()
+        }
     }
     
     func requestListData() {
@@ -74,7 +91,12 @@ extension ListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 8
+        switch section {
+        case 0: return main?.count ?? 0
+        case 1: return soup?.count ?? 0
+        case 2: return side?.count ?? 0
+        default: return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -97,10 +119,7 @@ extension ListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = tableView.dequeueReusableCell(withIdentifier: "MainTableViewHeader") as! ListTableViewHeader
-        headerView.badgeButton.setTitle(badges[section], for: .normal)
-        headerView.badgeButton.layer.borderWidth = 1
-        headerView.badgeButton.layer.borderColor = UIColor.lightGray.cgColor
-        headerView.titleLabel.text = titles[section]
+        headerView.configure(section: section)
         return headerView.contentView
     }
 }
