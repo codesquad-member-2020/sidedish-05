@@ -1,13 +1,31 @@
 import React from "react";
-import { jsx, css } from "@emotion/core";
 import styled from "@emotion/styled";
-import DetailProduct from "./DetailProduct/DetailProduct";
+import ProductImage from "./ProductImage";
+import ProductInfo from "./ProductInfo";
+import ProductBadge from "./ProductBadge";
+// import DetailProduct from "./DetailProduct/DetailProduct";
 
-const Product = () => {
+const ProductBox = styled.div`
+  width: 215px;
+`;
+
+const ProductImageContainer = styled.div`
+  width: 215px;
+  margin: 0px 15px 8px;
+`;
+
+const Product = ({ item }) => {
+  const { image, delivery_type, title, description, n_price, s_price } = item;
+
   return (
-    <div>
-      <DetailProduct></DetailProduct>
-    </div>
+    <ProductBox>
+      <ProductImageContainer>
+        <ProductImage imgdata={{ image: image, title: title, delivery_type: delivery_type }} />
+        <ProductInfo infodata={{ title, description, n_price, s_price }} />
+        <ProductBadge />
+      </ProductImageContainer>
+      {/* <DetailProduct></DetailProduct> */}
+    </ProductBox>
   );
 };
 
