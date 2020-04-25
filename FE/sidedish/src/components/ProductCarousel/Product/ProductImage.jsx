@@ -39,7 +39,6 @@ const DeilveryType = styled.div`
   color: #fff;
   font-size: 20px;
   font-weight: 400;
-  width: inherit;
   padding: 10px 0;
   &:first-child {
     border-bottom: 1px solid #fff;
