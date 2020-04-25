@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import styled from "@emotion/styled";
 import ProductCarousel from "./ProductCarousel";
 import arrowNext from "./navigate_next.png";
@@ -31,14 +31,8 @@ const MoreCarousel = () => {
   const [showResults, setShowResults] = useState(false);
   const onClick = () => setShowResults(true);
 
-  const endRef = useRef(null);
-
-  useEffect(() => {
-    endRef.current.scrollIntoView({ behavior: "smooth" });
-  });
-
   return (
-    <div ref={endRef}>
+    <>
       {!showResults && (
         <Container>
           <MoreButton onClick={onClick}>
@@ -47,7 +41,7 @@ const MoreCarousel = () => {
         </Container>
       )}
       {showResults && <ProductCarousel api={API_URL.side} />}
-    </div>
+    </>
   );
 };
 
