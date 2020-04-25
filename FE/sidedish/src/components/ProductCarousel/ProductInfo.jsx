@@ -12,7 +12,19 @@ const ProductDescription = styled.dd``;
 
 const ProductPrice = styled.dd``;
 
-const SellingPrice = styled.p``;
+const SellingPrice = styled.p`
+  font-size: 26px;
+  color: #2ac1bc;
+  font-weight: bold;
+  vertical-align: middle;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  margin-right: 5px;
+  &::after {
+    content: "원";
+    font-size: 20px;
+  }
+`;
 
 const OriginPrice = styled.p`
   position: relative;
