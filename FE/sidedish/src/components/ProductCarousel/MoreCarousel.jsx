@@ -4,6 +4,11 @@ import ProductCarousel from "./ProductCarousel";
 import arrowNext from "./navigate_next.png";
 import { API_URL } from "../../common/config";
 
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
 const MoreButton = styled.button`
   margin: 38px auto 50px;
   padding: 17px 0 15px;
@@ -28,9 +33,11 @@ const MoreCarousel = () => {
 
   return (
     <>
-      <MoreButton onClick={onClick}>
-        <ButtonText>{"반찬 전체보기"}</ButtonText>
-      </MoreButton>
+      <Container>
+        <MoreButton onClick={onClick}>
+          <ButtonText>{"반찬 전체보기"}</ButtonText>
+        </MoreButton>
+      </Container>
       {showResults ? <ProductCarousel api={API_URL.side} /> : null}
     </>
   );
