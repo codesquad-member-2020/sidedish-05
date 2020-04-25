@@ -27,6 +27,7 @@ const DeilveryTypeContainer = styled.div`
   border-radius: 50%;
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-direction: column;
   &:hover {
     opacity: 0.7;
@@ -35,10 +36,14 @@ const DeilveryTypeContainer = styled.div`
 
 const DeilveryType = styled.div`
   text-align: center;
-  color: white;
+  color: #fff;
   font-size: 20px;
+  font-weight: 400;
   width: inherit;
-  margin: 10px 0;
+  padding: 10px 0;
+  &:first-child {
+    border-bottom: 1px solid #fff;
+  }
 `;
 
 const ProductImage = ({ imgdata }) => {
