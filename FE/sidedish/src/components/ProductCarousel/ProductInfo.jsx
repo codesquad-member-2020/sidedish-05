@@ -14,7 +14,15 @@ const ProductPrice = styled.dd``;
 
 const SellingPrice = styled.p``;
 
-const OriginPrice = styled.p``;
+const OriginPrice = styled.p`
+  position: relative;
+  top: 2px;
+  font-size: 14px;
+  color: #888;
+  font-weight: normal;
+  vertical-align: middle;
+  text-decoration: line-through;
+`;
 
 const ProductInfo = ({ infodata }) => {
   const { title, description, n_price, s_price } = infodata;
