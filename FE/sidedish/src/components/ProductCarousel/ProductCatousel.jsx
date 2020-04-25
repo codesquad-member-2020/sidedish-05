@@ -10,6 +10,11 @@ import Product from "./Product";
 import arrowNext from "./navigate_next.png";
 import arrowPrev from "./navigate_before.png";
 
+const SliderWrap = styled.div`
+  width: 980px;
+  margin: 0 auto;
+`;
+
 const ProductCarousel = ({ api }) => {
   const [products, setProducts] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -24,10 +29,18 @@ const ProductCarousel = ({ api }) => {
     fetchData();
   }, [api]);
 
+  if (loading) {
+    return (
+      <SliderWrap>
+        <Skeleton count={4} circle={true} height={215} width={215} />
+      </SliderWrap>
+    );
+  }
+
   if (!products) return null;
 
   return (
-    <>
+    <SliderWrap>
       <Slider>
         {products.map((item) => (
           <div style={{ width: 215 }}>
@@ -35,7 +48,7 @@ const ProductCarousel = ({ api }) => {
           </div>
         ))}
       </Slider>
-    </>
+    </SliderWrap>
   );
 };
 
