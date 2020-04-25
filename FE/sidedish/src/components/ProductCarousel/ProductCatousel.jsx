@@ -5,7 +5,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Skeleton from "react-loading-skeleton";
-import Product from "./Product";
+import Product from "./Product/Product";
 // import usePromise from "../../lib/usePromise";
 import arrowNext from "./navigate_next.png";
 import arrowPrev from "./navigate_before.png";
