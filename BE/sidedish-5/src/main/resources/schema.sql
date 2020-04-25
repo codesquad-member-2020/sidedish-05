@@ -19,8 +19,8 @@ CREATE TABLE sidedish (
     point varchar (64),
     n_price varchar (64),
     s_price varchar (64),
-    delivery_type varchar (64),
     delivery_info varchar (255),
+    delivery_fee varchar (255) DEFAULT '2,500원 (40,000원 이상 구매 시 무료)',
     category varchar (64) REFERENCES category(id) ON UPDATE CASCADE
 );
 
