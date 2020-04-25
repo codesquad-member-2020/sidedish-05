@@ -6,11 +6,34 @@ const Container = styled.dl`
   text-align: center;
 `;
 
-const ProductTitle = styled.dt``;
+const ProductTitle = styled.dt`
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.07em;
+  color: #000;
+  width: 100%;
+  margin-bottom: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+`;
 
-const ProductDescription = styled.dd``;
+const ProductDescription = styled.dd`
+  width: 100%;
+  font-size: 13px;
+  color: #666;
+  min-height: 16px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+`;
 
-const ProductPrice = styled.dd``;
+const ProductPrice = styled.dd`
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 const SellingPrice = styled.p`
   font-size: 26px;
