@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "@emotion/styled";
 import ProductImage from "./ProductImage";
 import ProductInfo from "./ProductInfo";
 import ProductBadge from "./ProductBadge";
-// import DetailProduct from "./DetailProduct/DetailProduct";
+import Modal from "../DetailProduct/Modal";
 
 const ProductBox = styled.div`
   width: 215px;
@@ -15,17 +15,24 @@ const ProductImageContainer = styled.div`
 `;
 
 const Product = ({ item }) => {
-  const { image, delivery_type, title, description, n_price, s_price, badge } = item;
+  const { image, delivery_type, title, description, n_price, s_price, badge, detail_hash } = item;
+  const [isShowing, setIsShowing] = useState(false);
+
+  const toggle = () => {
+    setIsShowing(!isShowing);
+  };
 
   return (
-    <ProductBox>
-      <ProductImageContainer>
-        <ProductImage imgdata={{ image: image, title: title, delivery_type: delivery_type }} />
-        <ProductInfo infodata={{ title, description, n_price, s_price }} />
-        {badge && badge.length ? <ProductBadge badgedata={badge} /> : ""}
-      </ProductImageContainer>
-      {/* <DetailProduct></DetailProduct> */}
-    </ProductBox>
+    <>
+      <ProductBox className="product-box" onClick={toggle}>
+        <ProductImageContainer>
+          <ProductImage imgdata={{ image: image, title: title, delivery_type: delivery_type }} />
+          <ProductInfo infodata={{ title, description, n_price, s_price }} />
+          {badge && badge.length ? <ProductBadge badgedata={badge} /> : ""}
+        </ProductImageContainer>
+      </ProductBox>
+      <Modal isShowing={isShowing} hide={toggle} hash={detail_hash} />
+    </>
   );
 };
 
