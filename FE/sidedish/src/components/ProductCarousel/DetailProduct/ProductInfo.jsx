@@ -1,7 +1,9 @@
 import React from "react";
 import styled from "@emotion/styled";
 
-const InfoContainer = styled.div``;
+const InfoContainer = styled.div`
+  display: 60%;
+`;
 
 const Title = styled.h2``;
 

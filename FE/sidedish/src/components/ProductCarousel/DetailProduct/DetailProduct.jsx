@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from "react";
+import styled from "@emotion/styled";
 import axios from "axios";
 import ImageList from "./ImageList";
 import ProductInfo from "./ProductInfo";
 // import RecommandProductList from "./RecommandProductList";
 import { API_URL } from "../../../common/config";
+
+const DetailProductContainer = styled.div`
+  display: flex;
+`;
 
 const DetailProduct = ({ hash }) => {
   const [info, setInfo] = useState(null);
@@ -21,11 +26,11 @@ const DetailProduct = ({ hash }) => {
   const { top_image, thumb_images } = info;
 
   return (
-    <div>
+    <DetailProductContainer>
       <ImageList topImage={top_image} thumbImage={thumb_images}></ImageList>
       <ProductInfo info={info}></ProductInfo>
       {/* <RecommandProductList></RecommandProductList> */}
-    </div>
+    </DetailProductContainer>
   );
 };
 
