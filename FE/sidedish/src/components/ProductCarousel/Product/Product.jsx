@@ -20,7 +20,7 @@ const Product = ({ item }) => {
   return (
     <ProductBox>
       <ProductImageContainer>
-        <ProductImage imgdata={{ image: image, title: title, delivery_type: delivery_type }} />
+        <ProductImage imgdata={{ image, title, delivery_type }} />
         <ProductInfo infodata={{ title, description, n_price, s_price }} />
         {badge && badge.length ? <ProductBadge badgedata={badge} /> : ""}
       </ProductImageContainer>
