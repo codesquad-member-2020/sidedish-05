@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ImageList from "./ImageList";
 import ProductInfo from "./ProductInfo";
-import RecommandProductList from "./RecommandProductList";
+// import RecommandProductList from "./RecommandProductList";
 import { API_URL } from "../../../common/config";
 
 const DetailProduct = ({ hash }) => {
@@ -11,20 +11,20 @@ const DetailProduct = ({ hash }) => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(`${API_URL.detail}${hash}`);
-      console.log(response.data.data);
       setInfo(response.data.data);
     };
     fetchData();
   }, [hash]);
 
   if (!info) return null;
-  console.log(info);
+
+  const { top_image, thumb_images } = info;
 
   return (
     <div>
-      <ImageList imagedata={info.top_image}></ImageList>
-      <ProductInfo></ProductInfo>
-      <RecommandProductList></RecommandProductList>
+      <ImageList topImage={top_image} thumbImage={thumb_images}></ImageList>
+      <ProductInfo info={info}></ProductInfo>
+      {/* <RecommandProductList></RecommandProductList> */}
     </div>
   );
 };
