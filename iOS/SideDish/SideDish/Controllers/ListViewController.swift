@@ -35,6 +35,10 @@ class ListViewController: UIViewController {
     
     private let dishesRenewalNotification = Notification.Name("dishRenewalNotification")
     private let dishesRenewalInfoKey = "section"
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
