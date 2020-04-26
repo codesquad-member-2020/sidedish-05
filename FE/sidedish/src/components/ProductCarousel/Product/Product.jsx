@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "@emotion/styled";
 import ProductImage from "./ProductImage";
 import ProductInfo from "./ProductInfo";
 import ProductBadge from "./ProductBadge";
-// import DetailProduct from "./DetailProduct/DetailProduct";
+import Modal from "../DetailProduct/Modal";
 
 const ProductBox = styled.div`
   width: 215px;
@@ -15,7 +15,12 @@ const ProductImageContainer = styled.div`
 `;
 
 const Product = ({ item }) => {
-  const { image, delivery_type, title, description, n_price, s_price, badge } = item;
+  const { image, delivery_type, title, description, n_price, s_price, badge, detail_hash } = item;
+  const [isShowing, setIsShowing] = useState(false);
+
+  const toggle = () => {
+    setIsShowing(!isShowing);
+  };
 
   return (
     <ProductBox>
@@ -26,6 +31,7 @@ const Product = ({ item }) => {
       </ProductImageContainer>
       {/* <DetailProduct></DetailProduct> */}
     </ProductBox>
+
   );
 };
 
