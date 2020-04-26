@@ -23,16 +23,15 @@ const Product = ({ item }) => {
   };
 
   return (
-    <>
-      <ProductBox className="product-box" onClick={toggle}>
-        <ProductImageContainer>
-          <ProductImage imgdata={{ image: image, title: title, delivery_type: delivery_type }} />
-          <ProductInfo infodata={{ title, description, n_price, s_price }} />
-          {badge && badge.length ? <ProductBadge badgedata={badge} /> : ""}
-        </ProductImageContainer>
-      </ProductBox>
-      <Modal isShowing={isShowing} hide={toggle} hash={detail_hash} />
-    </>
+    <ProductBox>
+      <ProductImageContainer>
+        <ProductImage imgdata={{ image, title, delivery_type }} />
+        <ProductInfo infodata={{ title, description, n_price, s_price }} />
+        {badge && badge.length ? <ProductBadge badgedata={badge} /> : ""}
+      </ProductImageContainer>
+      {/* <DetailProduct></DetailProduct> */}
+    </ProductBox>
+
   );
 };
 
