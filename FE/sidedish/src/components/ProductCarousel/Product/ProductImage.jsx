@@ -46,9 +46,7 @@ const DeilveryType = styled.div`
   }
 `;
 
-const ProductImage = ({ imgdata }) => {
-  const { image, title, delivery_type } = imgdata;
-
+const ProductImage = ({ imgdata: { image, title, delivery_type } }) => {
   return (
     <Container>
       <Image src={image} alt={title}></Image>
