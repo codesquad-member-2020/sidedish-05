@@ -26,11 +26,30 @@ const ModalWrapper = styled.div`
   outline: 0;
 `;
 
-const ModalDetail = styled.div``;
+const ModalDetail = styled.div`
+  z-index: 100;
+  background: white;
+  position: relative;
+  margin: 1.75rem auto;
+  border-radius: 3px;
+  max-width: 980px;
+  padding: 2rem;
+`;
 
-const ModalHeader = styled.div``;
+const ModalHeader = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`;
 
-const Close = styled.button``;
+const Close = styled.button`
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #000;
+  opacity: 0.3;
+  cursor: pointer;
+  border: none;
+`;
 
 const Modal = ({ isShowing, hide, hash }) => {
   return (
