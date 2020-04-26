@@ -1,16 +1,17 @@
 import React from "react";
 import styled from "@emotion/styled";
 
+const ImageListContainer = styled.div``;
+
 const Image = styled.img`
   width: 250px;
 `;
 
-const ImageList = ({ imagedata }) => {
-  console.log(imagedata);
+const ImageList = ({ topImage, thumbImage }) => {
   return (
-    <div>
-      <Image src={imagedata}></Image>
-    </div>
+    <ImageListContainer>
+      <Image src={topImage}></Image>
+    </ImageListContainer>
   );
 };
 
