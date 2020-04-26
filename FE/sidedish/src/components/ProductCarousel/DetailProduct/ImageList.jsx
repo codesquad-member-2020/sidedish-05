@@ -1,9 +1,17 @@
 import React from "react";
-import { jsx, css } from "@emotion/core";
 import styled from "@emotion/styled";
 
-const ImageList = () => {
-  return <div>{/* <Image></Image> */}</div>;
+const Image = styled.img`
+  width: 250px;
+`;
+
+const ImageList = ({ imagedata }) => {
+  console.log(imagedata);
+  return (
+    <div>
+      <Image src={imagedata}></Image>
+    </div>
+  );
 };
 
 export default ImageList;
