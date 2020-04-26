@@ -1,12 +1,32 @@
 import React from "react";
-import { jsx, css } from "@emotion/core";
 import styled from "@emotion/styled";
 
-const ProductInfo = () => {
+const InfoContainer = styled.div``;
+
+const Title = styled.h2``;
+
+const Description = styled.p``;
+
+const Point = styled.div``;
+
+const DeliveryInfo = styled.div``;
+
+const DeliveryFee = styled.div``;
+
+const Price = styled.div``;
+
+const ProductInfo = ({ info }) => {
+  const { product_description, point, delivery_info, delivery_fee, prices } = info;
+
   return (
-    <div>
-      <ProductInfo></ProductInfo>
-    </div>
+    <InfoContainer>
+      <Title>[집밥의 완성] 두부시개리조림 200g</Title>
+      <Description>{product_description}</Description>
+      <Point>{point}</Point>
+      <DeliveryInfo>{delivery_info}</DeliveryInfo>
+      <DeliveryFee>{delivery_fee}</DeliveryFee>
+      <Price>{prices[0]}</Price>
+    </InfoContainer>
   );
 };
 
