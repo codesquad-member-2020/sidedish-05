@@ -1,9 +1,20 @@
 import React from "react";
-import { jsx, css } from "@emotion/core";
 import styled from "@emotion/styled";
 
-const ImageList = () => {
-  return <div>{/* <Image></Image> */}</div>;
+const ImageListContainer = styled.div`
+  width: 40%;
+`;
+
+const Image = styled.img`
+  width: 90%;
+`;
+
+const ImageList = ({ topImage, thumbImage }) => {
+  return (
+    <ImageListContainer>
+      <Image src={topImage}></Image>
+    </ImageListContainer>
+  );
 };
 
 export default ImageList;

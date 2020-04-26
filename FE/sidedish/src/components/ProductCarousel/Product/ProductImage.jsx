@@ -40,7 +40,7 @@ const DeilveryType = styled.div`
   font-size: 20px;
   font-weight: 400;
   padding: 10px 0;
-  &:first-child {
+  &:first-of-type {
     border-bottom: 1px solid #fff;
   }
 `;
