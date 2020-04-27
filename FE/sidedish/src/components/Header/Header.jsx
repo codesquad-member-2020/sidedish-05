@@ -16,6 +16,7 @@ const HeaderMain = styled.div`
   width: 980px;
   margin: 0 auto;
   display: flex;
+  align-items: center;
 `;
 
 const Header = () => {
