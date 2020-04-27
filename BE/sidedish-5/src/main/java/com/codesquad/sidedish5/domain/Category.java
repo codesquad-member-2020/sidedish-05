@@ -14,10 +14,13 @@ public class Category {
 
     private String name;
 
+    private String description;
+
     private Set<Sidedish> sidedishes = new HashSet<>();
 
-    public Category(String name) {
+    public Category(String name, String description) {
         this.name = name;
+        this.description = description;
     }
 
     public void addSidedish(Sidedish sidedish) {

@@ -3,7 +3,8 @@ sidedish_delivery_type, delivery_type, sidedish, badge, category;
 
 CREATE TABLE category (
     id int auto_increment primary key,
-    name varchar (64)
+    name varchar (64),
+    description varchar (64)
 );
 
 CREATE TABLE badge (
