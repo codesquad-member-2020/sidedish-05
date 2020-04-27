@@ -32,16 +32,14 @@ class ListTableViewCell: UITableViewCell {
         }
     }
     
-    func configure(data: [Dish], row: Int) {
-        let dish = data[row]
-        
-        guard let imageURL = URL(string: dish.image) else { return }
-        DispatchQueue.global().async {
-            if let data = try? Data(contentsOf: imageURL) {
-                DispatchQueue.main.async {
-                    self.menuImageView.image = UIImage(data: data)
-                    self.menuImageView.layer.cornerRadius = self.menuImageView.frame.height / 2
-                }
+    func configure(with dish: Dish) {
+        let cachesURL = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
+        let imageName = URL(string: dish.image)!.lastPathComponent
+        let imageURL = cachesURL.appendingPathComponent(imageName)
+        if let image = try? Data(contentsOf: imageURL) {
+            DispatchQueue.main.async {
+                self.menuImageView.image = UIImage(data: image)
+                self.menuImageView.layer.cornerRadius = self.menuImageView.frame.height / 2
             }
         }
         

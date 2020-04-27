@@ -46,7 +46,7 @@ class ListViewController: UIViewController {
         configureNavigationBar()
         configureTableView()
         registerNotification()
-        requestListData()
+        getAllDishes()
     }
     
     func configureNavigationBar() {
@@ -66,24 +66,24 @@ class ListViewController: UIViewController {
     }
     
     @objc func reloadSection(_ notification: Notification) {
-        guard let userInfo = notification.userInfo else { return }
-        let section = userInfo[dishesRenewalInfoKey] as! Int
+//        guard let userInfo = notification.userInfo else { return }
+//        let section = userInfo[dishesRenewalInfoKey] as! Int
         DispatchQueue.main.async {
-//            self.tableView.reloadSections(IndexSet(integer: section), with: .automatic)
+//            self.tableView.reloadSbections(IndexSet(integer: section), with: .automatic)
             self.tableView.reloadData()
         }
     }
     
-    func requestListData() {
-        NetworkUseCase.requestMain(with: NetworkManager()) { (dishes) in
+    func getAllDishes() {
+        NetworkUseCase.getMainDishes(with: NetworkManager()) { (dishes) in
             self.main = dishes
         }
         
-        NetworkUseCase.requestSoup(with: NetworkManager()) { (dishes) in
+        NetworkUseCase.getSoupDishes(with: NetworkManager()) { (dishes) in
             self.soup = dishes
         }
 
-        NetworkUseCase.requestSide(with: NetworkManager()) { (dishes) in
+        NetworkUseCase.getSideDishes(with: NetworkManager()) { (dishes) in
             self.side = dishes
         }
     }
@@ -109,9 +109,9 @@ extension ListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListTableViewCell", for: indexPath) as! ListTableViewCell
-        if indexPath.section == 0, let main = main { cell.configure(data: main, row: indexPath.row) }
-        if indexPath.section == 1, let soup = soup { cell.configure(data: soup, row: indexPath.row) }
-        if indexPath.section == 2, let side = side { cell.configure(data: side, row: indexPath.row) }
+        if indexPath.section == 0, let main = main { cell.configure(with: main[indexPath.row]) }
+        if indexPath.section == 1, let soup = soup { cell.configure(with: soup[indexPath.row]) }
+        if indexPath.section == 2, let side = side { cell.configure(with: side[indexPath.row]) }
         return cell
     }
 }
