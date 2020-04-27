@@ -14,7 +14,7 @@ const SearchBar = styled.form`
 
 const InputSearch = styled.input`
   border: 1px solid #cfd0d2;
-  width: 210px;
+  width: 300px;
   height: 40px;
   padding: 0 38px 0 15px;
   color: #888;
@@ -31,11 +31,24 @@ const SubmitButton = styled.button`
   opacity: 0.4;
 `;
 
-const MainNaviBar = styled.ul``;
+const MainNaviBar = styled.ul`
+  display: flex;
+`;
 
-const LinkBest = styled.li``;
-
-const LinkPromotion = styled.li``;
+const Link = styled.li`
+  cursor: pointer;
+  font-size: 27px;
+  font-weight: 600;
+  & + & {
+    margin-left: 25px;
+  }
+  .desc {
+    font-size: 12px;
+    color: #6fd9d6;
+    text-align: center;
+    font-weight: 600;
+  }
+`;
 
 const HeaderMainContent = () => {
   return (
@@ -46,8 +59,12 @@ const HeaderMainContent = () => {
         <SubmitButton />
       </SearchBar>
       <MainNaviBar>
-        <LinkBest>베스트</LinkBest>
-        <LinkPromotion>이벤트</LinkPromotion>
+        <Link>
+          <p className="desc">제일 잘 팔리는</p>베스트
+        </Link>
+        <Link>
+          <p className="desc">놓치면 후회</p>이벤트
+        </Link>
       </MainNaviBar>
     </>
   );
