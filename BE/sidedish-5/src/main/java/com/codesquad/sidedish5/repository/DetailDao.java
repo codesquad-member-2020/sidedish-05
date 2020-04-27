@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
+import java.util.List;
 
 @Repository
 public class DetailDao {
@@ -33,10 +34,32 @@ public class DetailDao {
                     .deliveryFee(rs.getString("delivery_fee"))
                     .n_price(rs.getString("n_price"))
                     .s_price(rs.getString("s_price"))
+                    .thumbImage(findThumbImage(rs.getString("id")))
+                    .detailSection(finddetailImage(rs.getString("id")))
                     .build();
             return detailDto;
         };
 
         return jdbcTemplate.queryForObject(sql, new Object[] {detailSidedishId}, detailSidedishRowMapper);
+    }
+
+    public List<String> findThumbImage(String detailSidedishId) {
+        String sql = "SELECT image_url " +
+                "FROM thumb_image " +
+                "WHERE sidedish = ?";
+
+        return jdbcTemplate.query(sql, new Object[] {detailSidedishId}, ((rs, rowNum) -> {
+            return rs.getString("image_url");
+        }));
+    }
+
+    public List<String> finddetailImage(String detailSidedishId) {
+        String sql = "SELECT image_url " +
+                "FROM detail_image " +
+                "WHERE sidedish = ?";
+
+        return jdbcTemplate.query(sql, new Object[] {detailSidedishId}, ((rs, rowNum) -> {
+            return rs.getString("image_url");
+        }));
     }
 }
