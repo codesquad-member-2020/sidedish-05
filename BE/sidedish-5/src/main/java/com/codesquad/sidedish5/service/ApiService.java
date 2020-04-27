@@ -45,6 +45,8 @@ public class ApiService {
 
     public void createCategory() throws URISyntaxException, JsonProcessingException {
         String[] categoryList = {"main", "soup", "side"};
+        String[] categoryNames = {"든든한 반찬", "국·찌개", "밑반찬"};
+        String[] categoryDescriptions = {"언제 먹어도 든든한 반찬", "김이 모락모락 국, 찌개", "담기만 하면 완성되는 밑반찬"};
         String[][] hashList = {
                 {"HBDEF", "HDF73", "HF778", "HFB53", "H077F", "H4665", "H1AA9", "HEDFB" },
                 {"H72C3", "HA6EE", "H8CD0", "HE2E9", "HAA47", "H3254", "H26C7", "HFFF9" },
@@ -52,7 +54,7 @@ public class ApiService {
         };
 
         for (int i = 0; i < categoryList.length; i++) {
-            Category category = new Category(categoryList[i]);
+            Category category = new Category(categoryNames[i], categoryDescriptions[i]);
             createSidedish(hashList[i], categoryList[i], category);
             categoryRepository.save(category);
         }
