@@ -43,7 +43,7 @@ public class DetailDao {
         return jdbcTemplate.queryForObject(sql, new Object[] {detailSidedishId}, detailSidedishRowMapper);
     }
 
-    public List<String> findThumbImage(String detailSidedishId) {
+    private List<String> findThumbImage(String detailSidedishId) {
         String sql = "SELECT image_url " +
                 "FROM thumb_image " +
                 "WHERE sidedish = ?";
@@ -53,7 +53,7 @@ public class DetailDao {
         }));
     }
 
-    public List<String> finddetailImage(String detailSidedishId) {
+    private List<String> finddetailImage(String detailSidedishId) {
         String sql = "SELECT image_url " +
                 "FROM detail_image " +
                 "WHERE sidedish = ?";
