@@ -66,11 +66,10 @@ class ListViewController: UIViewController {
     }
     
     @objc func reloadSection(_ notification: Notification) {
-//        guard let userInfo = notification.userInfo else { return }
-//        let section = userInfo[dishesRenewalInfoKey] as! Int
-        DispatchQueue.main.async {
-//            self.tableView.reloadSbections(IndexSet(integer: section), with: .automatic)
-            self.tableView.reloadData()
+        guard let userInfo = notification.userInfo else { return }
+        let section = userInfo[dishesRenewalInfoKey] as! Int
+        DispatchQueue.main.sync {
+            self.tableView.reloadSections(IndexSet(integer: section), with: .automatic)
         }
     }
     
