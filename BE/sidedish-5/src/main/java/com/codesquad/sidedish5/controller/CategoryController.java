@@ -1,38 +1,39 @@
 package com.codesquad.sidedish5.controller;
 
-import com.codesquad.sidedish5.dto.DetailDto;
-import com.codesquad.sidedish5.dto.OverviewDto;
-import com.codesquad.sidedish5.repository.DetailDao;
-import com.codesquad.sidedish5.repository.OverviewDao;
+import com.codesquad.sidedish5.dto.ResponseDto;
+import com.codesquad.sidedish5.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/banchan")
 public class CategoryController {
     @Autowired
-    OverviewDao overviewDao;
-
-    @Autowired
-    DetailDao detailDao;
+    private CategoryService categoryService;
 
     @GetMapping("/categories/{categoryId}")
-    public List<OverviewDto> showOverviewList(@PathVariable("categoryId") int categoryId) {
-        return overviewDao.findCategory(categoryId);
+    public ResponseEntity<ResponseDto> showOverviewList(@PathVariable("categoryId") int categoryId) {
+        ResponseDto responseDto = categoryService.getOverviewList(categoryId);
+        return ResponseEntity.ok().body(responseDto);
     }
 
     @GetMapping("/categories/{categoryId}/sidedishes/{sidedishId}")
-    public OverviewDto showOverview(@PathVariable("categoryId") int categoryId, @PathVariable("sidedishId") String sidedishId) {
-        return overviewDao.findSidedish(categoryId, sidedishId);
+    public ResponseEntity<ResponseDto> showOverview(@PathVariable("categoryId") int categoryId, @PathVariable("sidedishId") String sidedishId) {
+        ResponseDto responseDto = categoryService.getOverview(categoryId, sidedishId);
+        return ResponseEntity.ok().body(responseDto);
     }
 
     @GetMapping("/detail/{sidedishId}")
-    public DetailDto showDetail(@PathVariable("sidedishId") String sidedishId) {
-        return detailDao.findDetailSidedish(sidedishId);
+    public ResponseEntity<ResponseDto> showDetail(@PathVariable("sidedishId") String sidedishId) {
+        ResponseDto responseDto = categoryService.getDetail(sidedishId);
+        return ResponseEntity.ok().body(responseDto);
+    }
+
+    @ExceptionHandler(EmptyResultDataAccessException.class)
+    public ResponseEntity<ResponseDto> exceptionHandler() {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ResponseDto(404, "찾을 수 없습니다."));
     }
 }
