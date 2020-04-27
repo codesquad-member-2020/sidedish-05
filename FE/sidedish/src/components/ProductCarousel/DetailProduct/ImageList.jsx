@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "@emotion/styled";
 
 const ImageListContainer = styled.div`
@@ -23,12 +23,15 @@ const Thumbnail = styled.img`
 `;
 
 const ImageList = ({ topImage, thumbImage }) => {
+  const [hover, setHover] = useState(null);
+
   return (
     <ImageListContainer>
-      <Image src={topImage}></Image>
+      {!hover && <Image src={topImage}></Image>}
+      {hover && <Image src={hover}></Image>}
       <ThumbnailContainer>
         {thumbImage.map((image, index) => (
-          <Thumbnail src={image} key={index} />
+          <Thumbnail onMouseEnter={() => setHover(image)} src={image} key={index} />
         ))}
       </ThumbnailContainer>
     </ImageListContainer>
