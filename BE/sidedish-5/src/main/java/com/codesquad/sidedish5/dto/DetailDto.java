@@ -1,6 +1,7 @@
 package com.codesquad.sidedish5.dto;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.ArrayList;
@@ -8,7 +9,6 @@ import java.util.List;
 
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class DetailDto {
-
     @JsonProperty("sidedish_id")
     private final String sidedishId;
 
@@ -28,9 +28,15 @@ public class DetailDto {
     private final String deliveryFee;
 
     private final String description;
+
     private final String title;
+
     private final String point;
+
+    @JsonInclude(JsonInclude.Include.NON_EMPTY)
     private final String n_price;
+
+    @JsonInclude(JsonInclude.Include.NON_EMPTY)
     private final String s_price;
 
     public DetailDto(Builder builder) {
@@ -48,7 +54,7 @@ public class DetailDto {
     }
 
     public static class Builder {
-        private final String sidedishId;
+        private String sidedishId;
         private String title;
         private String description;
         private String mainImage;

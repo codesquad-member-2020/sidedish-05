@@ -1,6 +1,7 @@
 package com.codesquad.sidedish5.dto;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.ArrayList;
@@ -19,10 +20,18 @@ public class OverviewDto {
     private final List<String> deliveryType;
 
     private final String title;
+
     private final String description;
+
     private final String alt;
+
+    @JsonInclude(JsonInclude.Include.NON_EMPTY)
     private final String n_price;
+
+    @JsonInclude(JsonInclude.Include.NON_EMPTY)
     private final String s_price;
+
+    @JsonInclude(JsonInclude.Include.NON_EMPTY)
     private final List<String> badge;
 
     public OverviewDto(Builder builder) {
@@ -38,8 +47,7 @@ public class OverviewDto {
     }
 
     public static class Builder {
-
-        private final String sidedishId;
+        private String sidedishId;
         private String title;
         private String description;
         private String mainImage;
