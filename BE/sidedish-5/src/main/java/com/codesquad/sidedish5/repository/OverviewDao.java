@@ -1,5 +1,6 @@
 package com.codesquad.sidedish5.repository;
 
+import com.codesquad.sidedish5.dto.CategoryDto;
 import com.codesquad.sidedish5.dto.OverviewDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -18,14 +19,27 @@ public class OverviewDao {
         jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
-    public List<OverviewDto> findCategory(int categoryId) {
+    public CategoryDto findCategory(int categoryId) {
+        String sql = "SELECT c.id, c.name, c.description " +
+                "FROM category c " +
+                "WHERE id = ?";
+
+        return jdbcTemplate.queryForObject(sql, new Object[] {categoryId}, ((rs, rowNum) -> {
+            return new CategoryDto.Builder(rs.getInt("id"))
+                    .categoryName(rs.getString("name"))
+                    .categoryDescription(rs.getString("description"))
+                    .build();
+        }));
+    }
+
+    public List<Object> findSidedishList(int categoryId) {
         String sql = "SELECT s.id, s.title, s.description, s.main_image, s.n_price, s.s_price " +
                 "FROM sidedish s " +
                 "JOIN category c " +
                 "ON c.id = s.category " +
                 "WHERE c.id = ?";
 
-        RowMapper<OverviewDto> sidedishRowMapper = (rs, rowNum) -> {
+        RowMapper<Object> sidedishRowMapper = (rs, rowNum) -> {
             OverviewDto overviewDto = new OverviewDto.Builder(rs.getString("id"))
                     .title(rs.getString("title"))
                     .alt(rs.getString("title"))
@@ -42,13 +56,12 @@ public class OverviewDao {
         return jdbcTemplate.query(sql, new Object[] {categoryId}, sidedishRowMapper);
     }
 
-    public OverviewDto findSidedish(int categoryId, String sidedishId) {
+    public List<Object> findSidedish(String sidedishId) {
         String sql = "SELECT id, title, description, main_image, n_price, s_price"
                 + " FROM sidedish"
-                + " WHERE id = ? "
-                + "AND category = ?";
+                + " WHERE id = ?";
 
-        RowMapper<OverviewDto> sidedishRowMapper = (rs, rowNum) -> {
+        RowMapper<Object> sidedishRowMapper = (rs, rowNum) -> {
             OverviewDto overviewDto = new OverviewDto.Builder(rs.getString("id"))
                     .title(rs.getString("title"))
                     .alt(rs.getString("title"))
@@ -56,14 +69,15 @@ public class OverviewDao {
                     .mainImage(rs.getString("main_image"))
                     .n_price(rs.getString("n_price"))
                     .s_price(rs.getString("s_price"))
+                    .deliveryType(findDeliveryType(rs.getString("id")))
                     .build();
             return overviewDto;
         };
 
-        return jdbcTemplate.queryForObject(sql, new Object[] {sidedishId, categoryId}, sidedishRowMapper);
+        return jdbcTemplate.query(sql, new Object[] {sidedishId}, sidedishRowMapper);
     }
 
-    public List<String> findbadge(String sidedishId) {
+    private List<String> findbadge(String sidedishId) {
         String sql = "SELECT b.name " +
                 "FROM badge b " +
                 "JOIN sidedish_badge sb " +
@@ -77,7 +91,7 @@ public class OverviewDao {
         }));
     }
 
-    public List<String> findDeliveryType(String sidedishId) {
+    private List<String> findDeliveryType(String sidedishId) {
         String sql = "SELECT d.delivery_type " +
                 "FROM delivery_type d " +
                 "JOIN sidedish_delivery_type sd " +
