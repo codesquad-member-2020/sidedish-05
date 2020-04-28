@@ -14,7 +14,7 @@ const NaviWrap = styled.div`
 
 const CategoryBlock = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   width: 980px;
   height: inherit;
   margin: 0 auto;
