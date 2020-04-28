@@ -45,10 +45,10 @@ const DeilveryType = styled.div`
   }
 `;
 
-const ProductImage = ({ imgdata: { image, title, delivery_type } }) => {
+const ProductImage = ({ imgdata: { main_image, title, delivery_type } }) => {
   return (
     <Container>
-      <Image src={image} alt={title}></Image>
+      <Image src={main_image} alt={title}></Image>
       <DeilveryTypeContainer className="delivery">
         {delivery_type.map((type) => (
           <DeilveryType>{type}</DeilveryType>

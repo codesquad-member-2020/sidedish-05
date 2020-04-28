@@ -23,11 +23,11 @@ const DetailProduct = ({ hash }) => {
 
   if (!info) return null;
 
-  const { top_image, thumb_images } = info;
+  const { main_Image, thumb_image } = info;
 
   return (
     <DetailProductContainer>
-      <ImageList topImage={top_image} thumbImage={thumb_images}></ImageList>
+      <ImageList topImage={main_Image} thumbImage={thumb_image}></ImageList>
       <ProductInfo info={info}></ProductInfo>
       {/* <RecommandProductList></RecommandProductList> */}
     </DetailProductContainer>

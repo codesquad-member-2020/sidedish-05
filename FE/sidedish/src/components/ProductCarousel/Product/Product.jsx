@@ -7,6 +7,7 @@ import Modal from "../DetailProduct/Modal";
 
 const ProductBox = styled.div`
   width: 215px;
+  cursor: pointer;
 `;
 
 const ProductImageContainer = styled.div`
@@ -15,7 +16,16 @@ const ProductImageContainer = styled.div`
 `;
 
 const Product = ({ item }) => {
-  const { image, delivery_type, title, description, n_price, s_price, badge, detail_hash } = item;
+  const {
+    main_image,
+    delivery_type,
+    title,
+    description,
+    n_price,
+    s_price,
+    badge,
+    sidedish_id,
+  } = item;
   const [isShowing, setIsShowing] = useState(false);
 
   const toggle = () => {
@@ -26,12 +36,12 @@ const Product = ({ item }) => {
     <>
       <ProductBox className="product-box" onClick={toggle}>
         <ProductImageContainer>
-          <ProductImage imgdata={{ image, title, delivery_type }} />
+          <ProductImage imgdata={{ main_image, title, delivery_type }} />
           <ProductInfo infodata={{ title, description, n_price, s_price }} />
           {badge && badge.length ? <ProductBadge badgedata={badge} /> : ""}
         </ProductImageContainer>
       </ProductBox>
-      <Modal isShowing={isShowing} hide={toggle} hash={detail_hash} />
+      <Modal isShowing={isShowing} hide={toggle} hash={sidedish_id} />
     </>
   );
 };
