@@ -5,4 +5,6 @@ export const API_URL = {
   detail: process.env.REACT_APP_BASE_URL + process.env.REACT_APP_API_DETAIL,
 };
 
+export const AUTH_URL = process.env.REACT_APP_AUTH_URL;
+
 export const API_NAME = ["main", "soup", "side"];
