@@ -4,12 +4,12 @@ import axios from "axios";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Skeleton from "react-loading-skeleton";
 import Product from "./Product/Product";
 import ProductCarouselTitle from "./ProductCarouselTitle";
 // import usePromise from "../../lib/usePromise";
 import arrowNext from "./navigate_next.png";
 import arrowPrev from "./navigate_before.png";
+import loading from "./loading.svg";
 
 const SliderWrap = styled.div`
   width: 980px;
@@ -24,6 +24,13 @@ const NextArrow = styled.div`
   &::before {
     content: "";
   }
+`;
+
+const Skeleton = styled.div`
+  width: 980px;
+  height: 395px;
+  margin: 0 auto;
+  background: url(${loading}) no-repeat center;
 `;
 
 const PrevArrow = styled.div`
@@ -61,9 +68,9 @@ const ProductCarousel = ({ api }) => {
 
   if (loading) {
     return (
-      <SliderWrap>
-        <Skeleton count={4} circle={true} height={215} width={215} />
-      </SliderWrap>
+      <>
+        <Skeleton>{/* <img src="loading" alt=""/> */}</Skeleton>
+      </>
     );
   }
 
