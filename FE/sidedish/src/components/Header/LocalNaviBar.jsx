@@ -21,6 +21,7 @@ const Navigation = styled.a`
   cursor: pointer;
   display: flex;
   align-items: center;
+  text-decoration: none;
   &:hover {
     color: #6fd9d6;
     font-weight: 600;
