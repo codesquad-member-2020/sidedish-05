@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "@emotion/styled";
 import headerData from "./headerData";
 import { AUTH_URL } from "../../common/config";
@@ -21,7 +21,7 @@ const Navigation = styled.a`
   cursor: pointer;
   display: flex;
   align-items: center;
-  text-decoration: none;
+  /* text-decoration: none; */
   &:hover {
     color: #6fd9d6;
     font-weight: 600;
@@ -32,17 +32,18 @@ const Navigation = styled.a`
 `;
 
 const LocalNaviBar = () => {
+  const [isLogout, setIsLogout] = useState(false);
+
+  const logoutHandler = () => setIsLogout(!isLogout);
+
   return (
     <LocalNaviBarContainer>
-      {headerData.map((header, index) =>
-        index === 0 ? (
-          <Navigation href={AUTH_URL} key={index}>
-            {header.name}
-          </Navigation>
-        ) : (
-          <Navigation key={index}>{header.name}</Navigation>
-        )
-      )}
+      {!document.cookie && <Navigation href={AUTH_URL}>로그인</Navigation>}
+      {document.cookie && !isLogout && <Navigation onClick={logoutHandler}>로그아웃</Navigation>}
+      {document.cookie && isLogout && <Navigation href={AUTH_URL}>로그인</Navigation>}
+      {headerData.map((header, index) => (
+        <Navigation key={index}>{header.name}</Navigation>
+      ))}
     </LocalNaviBarContainer>
   );
 };
