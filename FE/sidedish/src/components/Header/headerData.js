@@ -1,5 +1,4 @@
 const headerData = [
-  { name: "로그인" },
   { name: "회원가입" },
   { name: "마이페이지" },
   { name: "고객센터" },
