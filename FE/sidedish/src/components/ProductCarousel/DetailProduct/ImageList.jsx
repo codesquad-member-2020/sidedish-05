@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "@emotion/styled";
 
 const ImageListContainer = styled.div`
-  width: 40%;
+  width: 45%;
 `;
 
 const Image = styled.img`
