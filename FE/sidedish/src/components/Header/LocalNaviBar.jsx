@@ -35,15 +35,17 @@ const LocalNaviBar = () => {
   const [isLogout, setIsLogout] = useState(false);
 
   const logoutHandler = () => {
-    setIsLogout(!isLogout);
-    document.cookie = "";
+    setIsLogout(true);
+
+    const date = new Date();
+    date.setDate(date.getDate() - 1);
+    document.cookie += ";Expires=" + date.toUTCString();
   };
 
   return (
     <LocalNaviBarContainer>
-      {!document.cookie && <Navigation href={AUTH_URL}>로그인</Navigation>}
       {document.cookie && !isLogout && <Navigation onClick={logoutHandler}>로그아웃</Navigation>}
-      {document.cookie && isLogout && <Navigation href={AUTH_URL}>로그인</Navigation>}
+      {(!document.cookie || isLogout) && <Navigation href={AUTH_URL}>로그인</Navigation>}
       {headerData.map((header, index) => (
         <Navigation key={index}>{header.name}</Navigation>
       ))}
