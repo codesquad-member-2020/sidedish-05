@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import axios from "axios";
 import ImageList from "./ImageList";
 import ProductInfo from "./ProductInfo";
-// import RecommandProductList from "./RecommandProductList";
+import RecommandProduct from "./RecommandProduct";
 import { API_URL } from "../../../common/config";
 
 const DetailProductContainer = styled.div`
@@ -23,14 +23,16 @@ const DetailProduct = ({ hash }) => {
 
   if (!info) return null;
 
-  const { main_Image, thumb_image } = info;
+  const { main_Image, thumb_image, detail_section } = info;
 
   return (
-    <DetailProductContainer>
-      <ImageList topImage={main_Image} thumbImage={thumb_image}></ImageList>
-      <ProductInfo info={info}></ProductInfo>
-      {/* <RecommandProductList></RecommandProductList> */}
-    </DetailProductContainer>
+    <>
+      <DetailProductContainer>
+        <ImageList topImage={main_Image} thumbImage={thumb_image}></ImageList>
+        <ProductInfo info={info}></ProductInfo>
+      </DetailProductContainer>
+      <RecommandProduct detailSection={detail_section}></RecommandProduct>
+    </>
   );
 };
 
