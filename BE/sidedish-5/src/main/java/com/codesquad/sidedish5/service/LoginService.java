@@ -18,7 +18,7 @@ public class LoginService {
     private static final Logger log = LoggerFactory.getLogger(LoginService.class);
     private String url = "https://github.com/login/oauth/access_token";
     private String clientId = "1b7982028f6ef8e3a91a";
-    private String clientSecret = "f8105f27f69964629df83c7c6151cb1c29091380";
+    private String clientSecret = "";
 
     public GithubToken getAccessToken(String code) throws JsonProcessingException {
         MultiValueMap<String, String> headers = new LinkedMultiValueMap<>();

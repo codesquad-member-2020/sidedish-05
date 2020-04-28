@@ -15,7 +15,6 @@ import java.io.IOException;
 @RestController
 public class LoginController {
     private static final Logger log = LoggerFactory.getLogger(LoginController.class);
-    LoginService loginService = new LoginService();
 
     @GetMapping("/githublogin")
     public ResponseEntity<String> githubLogin(@PathParam("code") String code, HttpServletResponse response) throws IOException {
