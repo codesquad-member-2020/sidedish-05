@@ -21,7 +21,7 @@ const Navigation = styled.a`
   cursor: pointer;
   display: flex;
   align-items: center;
-  /* text-decoration: none; */
+  text-decoration: none;
   &:hover {
     color: #6fd9d6;
     font-weight: 600;
@@ -34,7 +34,10 @@ const Navigation = styled.a`
 const LocalNaviBar = () => {
   const [isLogout, setIsLogout] = useState(false);
 
-  const logoutHandler = () => setIsLogout(!isLogout);
+  const logoutHandler = () => {
+    setIsLogout(!isLogout);
+    document.cookie = "";
+  };
 
   return (
     <LocalNaviBarContainer>
