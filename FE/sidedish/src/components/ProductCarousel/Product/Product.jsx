@@ -7,6 +7,7 @@ import Modal from "../DetailProduct/Modal";
 
 const ProductBox = styled.div`
   width: 215px;
+  height: 338px;
   cursor: pointer;
 `;
 
