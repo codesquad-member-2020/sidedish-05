@@ -53,7 +53,7 @@ const ProductCarousel = ({ api }) => {
     const fetchData = async () => {
       setLoading(true);
       const response = await axios.get(api);
-      setProducts(response.data.body);
+      setProducts(response.data.data);
       setLoading(false);
     };
     fetchData();
@@ -72,14 +72,14 @@ const ProductCarousel = ({ api }) => {
   return (
     <>
       <ProductCarouselTitle
-        title={"밑반찬"}
-        description={"언제 먹어도 든든한 밑반찬"}
+        title={products.category_name}
+        description={products.category_description}
       ></ProductCarouselTitle>
       <SliderWrap>
         <Slider {...slideSettings}>
-          {products.map((item) => (
+          {products.sidedish.map((item) => (
             <div style={{ width: 215 }}>
-              <Product item={item} key={item.detail_hash}></Product>
+              <Product item={item} key={item.sidedish_id}></Product>
             </div>
           ))}
         </Slider>
