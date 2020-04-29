@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
+import axios from "axios";
 
-const usePromise = (promiseCreator, deps) => {
-  // 로딩중 / 완료 / 실패에 대한 상태 관리
+const usePromise = (api) => {
   const [loading, setLoading] = useState(false);
   const [resolved, setResolved] = useState(null);
   const [error, setError] = useState(null);
@@ -10,7 +10,7 @@ const usePromise = (promiseCreator, deps) => {
     const process = async () => {
       setLoading(true);
       try {
-        const resolved = await promiseCreator();
+        const resolved = await axios.get(api);
         setResolved(resolved);
       } catch (e) {
         setError(e);
@@ -18,8 +18,7 @@ const usePromise = (promiseCreator, deps) => {
       setLoading(false);
     };
     process();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, deps);
+  }, [api]);
 
   return [loading, resolved, error];
 };
