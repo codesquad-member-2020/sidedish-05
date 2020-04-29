@@ -1,5 +1,7 @@
 import { css } from "@emotion/core";
 
+// reset css 출처:  https://meyerweb.com/eric/tools/css/reset/
+
 const reset = css`
   * {
     box-sizing: border-box;
