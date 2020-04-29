@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled from "@emotion/styled";
-import axios from "axios";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Product from "./Product/Product";
 import ProductCarouselTitle from "./ProductCarouselTitle";
-// import usePromise from "../../lib/usePromise";
+import usePromise from "../../lib/usePromise";
 import arrowNext from "./navigate_next.png";
 import arrowPrev from "./navigate_before.png";
 import loading from "./loading.svg";
@@ -53,18 +52,7 @@ const slideSettings = {
 };
 
 const ProductCarousel = ({ api }) => {
-  const [products, setProducts] = useState(null);
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      const response = await axios.get(api);
-      setProducts(response.data.data);
-      setLoading(false);
-    };
-    fetchData();
-  }, [api]);
+  const [loading, response, error] = usePromise(api);
 
   if (loading) {
     return (
@@ -74,17 +62,23 @@ const ProductCarousel = ({ api }) => {
     );
   }
 
-  if (!products) return null;
+  if (!response) return null;
+
+  if (error) {
+    return <>{console.error(error)}</>;
+  }
+
+  const { data } = response.data;
 
   return (
     <>
       <ProductCarouselTitle
-        title={products.category_name}
-        description={products.category_description}
+        title={data.category_name}
+        description={data.category_description}
       ></ProductCarouselTitle>
       <SliderWrap>
         <Slider {...slideSettings}>
-          {products.sidedish.map((item) => (
+          {data.sidedish.map((item) => (
             <div style={{ width: 215 }}>
               <Product item={item} key={item.sidedish_id}></Product>
             </div>
