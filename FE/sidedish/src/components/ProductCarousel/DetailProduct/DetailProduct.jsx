@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styled from "@emotion/styled";
-import axios from "axios";
 import ImageList from "./ImageList";
 import ProductInfo from "./ProductInfo";
 import RecommandProduct from "./RecommandProduct";
+import usePromise from "../../../lib/usePromise";
 import { API_URL } from "../../../common/config";
 
 const DetailProductContainer = styled.div`
@@ -11,25 +11,21 @@ const DetailProductContainer = styled.div`
 `;
 
 const DetailProduct = ({ hash }) => {
-  const [info, setInfo] = useState(null);
+  const [loading, response, error] = usePromise(`${API_URL.detail}${hash}`);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await axios.get(`${API_URL.detail}${hash}`);
-      setInfo(response.data.data);
-    };
-    fetchData();
-  }, [hash]);
+  if (error) {
+    return <>{console.error(error)}</>;
+  }
 
-  if (!info) return null;
+  if (!response) return null;
 
-  const { main_Image, thumb_image, detail_section } = info;
+  const { main_Image, thumb_image, detail_section } = response.data.data;
 
   return (
     <>
       <DetailProductContainer>
         <ImageList topImage={main_Image} thumbImage={thumb_image}></ImageList>
-        <ProductInfo info={info}></ProductInfo>
+        <ProductInfo info={response.data.data}></ProductInfo>
       </DetailProductContainer>
       <RecommandProduct detailSection={detail_section}></RecommandProduct>
     </>
