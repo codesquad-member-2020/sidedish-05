@@ -46,6 +46,9 @@ const Price = styled.div`
   width: 90%;
   border-bottom: 0.5px solid #e6e1e1;
   padding-bottom: 20px;
+  &::after {
+    content: "원";
+  }
 `;
 
 const CountContainer = styled.div`
@@ -94,6 +97,10 @@ const TotalPrice = styled.div`
     font-size: 30px;
     font-weight: 600;
     color: #2ac1bc;
+    &::after {
+      content: "원";
+      font-size: 20px;
+    }
   }
 `;
 
@@ -138,7 +145,7 @@ const DetailProductInfo = ({ info }) => {
           <InfoTitle>배송비</InfoTitle>
         </PriceInfoTitle>
         <div>
-          <InfoContent>{point}</InfoContent>
+          <InfoContent>{point}원</InfoContent>
           <InfoContent>{delivery_info}</InfoContent>
           <InfoContent>{delivery_fee}</InfoContent>
         </div>
