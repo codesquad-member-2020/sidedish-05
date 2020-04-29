@@ -46,6 +46,9 @@ const Price = styled.div`
   width: 90%;
   border-bottom: 0.5px solid #e6e1e1;
   padding-bottom: 20px;
+  &::after {
+    content: "원";
+  }
 `;
 
 const CountContainer = styled.div`
@@ -94,6 +97,10 @@ const TotalPrice = styled.div`
     font-size: 30px;
     font-weight: 600;
     color: #2ac1bc;
+    &::after {
+      content: "원";
+      font-size: 20px;
+    }
   }
 `;
 
@@ -108,7 +115,7 @@ const AddButton = styled.button`
   cursor: pointer;
 `;
 
-const ProductInfo = ({ info }) => {
+const DetailProductInfo = ({ info }) => {
   const { title, description, point, delivery_info, delivery_fee, s_price, n_price } = info;
   const [currCount, setCurrCount] = useState(1);
 
@@ -138,7 +145,7 @@ const ProductInfo = ({ info }) => {
           <InfoTitle>배송비</InfoTitle>
         </PriceInfoTitle>
         <div>
-          <InfoContent>{point}</InfoContent>
+          <InfoContent>{point}원</InfoContent>
           <InfoContent>{delivery_info}</InfoContent>
           <InfoContent>{delivery_fee}</InfoContent>
         </div>
@@ -157,7 +164,6 @@ const ProductInfo = ({ info }) => {
             </button>
           </ArrowContainer>
         </Count>
-        {/* <ErrorMessage></ErrorMessage> */}
       </CountContainer>
       <TotalPrice>
         <span className="total-price">총 상품금액</span>
@@ -168,4 +174,4 @@ const ProductInfo = ({ info }) => {
   );
 };
 
-export default ProductInfo;
+export default DetailProductInfo;

@@ -8,6 +8,7 @@ const Container = styled.div`
 const Image = styled.img`
   border-radius: 50%;
   width: 215px;
+  height: 215px;
   opacity: 1;
   backface-visibility: hidden;
   &:hover {
