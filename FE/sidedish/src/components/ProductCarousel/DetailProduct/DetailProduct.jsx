@@ -4,14 +4,30 @@ import ImageList from "./ImageList";
 import ProductInfo from "./ProductInfo";
 import RecommandProduct from "./RecommandProduct";
 import usePromise from "../../../lib/usePromise";
+import loading from "../loading.svg";
 import { API_URL } from "../../../common/config";
 
 const DetailProductContainer = styled.div`
   display: flex;
 `;
 
+const Skeleton = styled.div`
+  width: 980px;
+  height: 800px;
+  margin: 0 auto;
+  background: url(${loading}) no-repeat center;
+`;
+
 const DetailProduct = ({ hash }) => {
   const [loading, response, error] = usePromise(`${API_URL.detail}${hash}`);
+
+  if (loading) {
+    return (
+      <>
+        <Skeleton />
+      </>
+    );
+  }
 
   if (error) {
     return <>{console.error(error)}</>;
