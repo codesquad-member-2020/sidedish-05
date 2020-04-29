@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import ImageList from "./ImageList";
-import ProductInfo from "./ProductInfo";
+import DetailProductInfo from "./DetailProductInfo";
 import RecommandProduct from "./RecommandProduct";
 import usePromise from "../../../lib/usePromise";
 import loading from "../loading.svg";
@@ -41,7 +41,7 @@ const DetailProduct = ({ hash }) => {
     <>
       <DetailProductContainer>
         <ImageList topImage={main_Image} thumbImage={thumb_image}></ImageList>
-        <ProductInfo info={response.data.data}></ProductInfo>
+        <DetailProductInfo info={response.data.data}></DetailProductInfo>
       </DetailProductContainer>
       <RecommandProduct detailSection={detail_section}></RecommandProduct>
     </>

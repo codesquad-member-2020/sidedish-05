@@ -108,7 +108,7 @@ const AddButton = styled.button`
   cursor: pointer;
 `;
 
-const ProductInfo = ({ info }) => {
+const DetailProductInfo = ({ info }) => {
   const { title, description, point, delivery_info, delivery_fee, s_price, n_price } = info;
   const [currCount, setCurrCount] = useState(1);
 
@@ -157,7 +157,6 @@ const ProductInfo = ({ info }) => {
             </button>
           </ArrowContainer>
         </Count>
-        {/* <ErrorMessage></ErrorMessage> */}
       </CountContainer>
       <TotalPrice>
         <span className="total-price">총 상품금액</span>
@@ -168,4 +167,4 @@ const ProductInfo = ({ info }) => {
   );
 };
 
-export default ProductInfo;
+export default DetailProductInfo;
