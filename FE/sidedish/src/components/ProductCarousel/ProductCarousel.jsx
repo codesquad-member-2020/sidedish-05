@@ -69,7 +69,7 @@ const ProductCarousel = ({ api }) => {
   if (loading) {
     return (
       <>
-        <Skeleton>{/* <img src="loading" alt=""/> */}</Skeleton>
+        <Skeleton />
       </>
     );
   }
