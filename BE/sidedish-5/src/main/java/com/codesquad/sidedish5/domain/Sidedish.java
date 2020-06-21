@@ -28,8 +28,6 @@ public class Sidedish {
 
     private String deliveryType;
 
-    private String deliveryInfo;
-
     private List<ThumbImage> thumbImages;
 
     private List<DetailImage> detailImages;
@@ -49,9 +47,6 @@ public class Sidedish {
         this.s_price = existPrice(dish, "s_price");
         this.n_price = existPrice(dish, "n_price");
         this.deliveryType = dish.get("delivery_type").textValue();
-        this.deliveryInfo = dishDetail.get("data").get("delivery_info").textValue();
-        this.thumbImages = getThumbImages(dishDetail.get("data").get("thumb_images"));
-        this.detailImages = getDetailImages(dishDetail.get("data").get("detail_section"));
     }
 
     private List<ThumbImage> getThumbImages (JsonNode thumbImagesArray) {

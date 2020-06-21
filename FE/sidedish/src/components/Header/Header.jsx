@@ -1,16 +1,34 @@
 import React from "react";
 import styled from "@emotion/styled";
+import LocalNaviBar from "./LocalNaviBar";
+import HeaderMainContent from "./HeaderMainContent";
 
-const headerMenuList = [];
+const HeaderBlock = styled.div`
+  width: 100%;
+`;
 
-const HeaderBlock = styled.div``;
+const HeaderMenu = styled.div`
+  border-bottom: 1px solid #e9e9e9;
+`;
 
-const HeaderMenu = styled.div``;
+const HeaderMain = styled.div`
+  height: 98px;
+  width: 980px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
 
 const Header = () => {
   return (
     <HeaderBlock>
-      <HeaderMenu></HeaderMenu>
+      <HeaderMenu>
+        <LocalNaviBar />
+      </HeaderMenu>
+      <HeaderMain>
+        <HeaderMainContent />
+      </HeaderMain>
     </HeaderBlock>
   );
 };

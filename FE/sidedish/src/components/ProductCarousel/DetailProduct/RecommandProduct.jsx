@@ -1,11 +1,16 @@
 import React from "react";
-import { jsx, css } from "@emotion/core";
 import styled from "@emotion/styled";
 
-const RecommandProduct = () => {
+const ImageSection = styled.img`
+  width: 100%;
+`;
+
+const RecommandProduct = ({ detailSection }) => {
   return (
     <div>
-      <RecommandProduct></RecommandProduct>
+      {detailSection.map((detail, index) => (
+        <ImageSection src={detail} key={index}></ImageSection>
+      ))}
     </div>
   );
 };

@@ -8,6 +8,7 @@ const Container = styled.div`
 const Image = styled.img`
   border-radius: 50%;
   width: 215px;
+  height: 215px;
   opacity: 1;
   backface-visibility: hidden;
   &:hover {
@@ -39,17 +40,16 @@ const DeilveryType = styled.div`
   color: #fff;
   font-size: 20px;
   font-weight: 400;
-  width: inherit;
   padding: 10px 0;
-  &:first-child {
+  &:first-of-type {
     border-bottom: 1px solid #fff;
   }
 `;
 
-const ProductImage = ({ imgdata: { image, title, delivery_type } }) => {
+const ProductImage = ({ imgdata: { main_image, title, delivery_type } }) => {
   return (
     <Container>
-      <Image src={image} alt={title}></Image>
+      <Image src={main_image} alt={title}></Image>
       <DeilveryTypeContainer className="delivery">
         {delivery_type.map((type) => (
           <DeilveryType>{type}</DeilveryType>
